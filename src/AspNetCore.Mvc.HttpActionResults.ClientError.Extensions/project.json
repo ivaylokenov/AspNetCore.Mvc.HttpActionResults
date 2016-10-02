@@ -1,0 +1,12 @@
+﻿{
+  "version": "0.1.0",
+
+  "dependencies": {
+    "AspNetCore.Mvc.HttpActionResults.ClientError": "0.1.0"
+  },
+
+  "frameworks": {
+    "netstandard1.6": {},
+    "net451": {}
+  }
+}
