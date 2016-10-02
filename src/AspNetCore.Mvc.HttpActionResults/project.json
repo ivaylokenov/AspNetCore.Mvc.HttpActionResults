@@ -1,0 +1,16 @@
+﻿{
+  "version": "0.1.0",
+
+  "dependencies": {
+    "AspNetCore.Mvc.HttpActionResults.Informational": "0.1.0",
+    "AspNetCore.Mvc.HttpActionResults.Success": "0.1.0",
+    "AspNetCore.Mvc.HttpActionResults.Redirection": "0.1.0",
+    "AspNetCore.Mvc.HttpActionResults.ClientError": "0.1.0",
+    "AspNetCore.Mvc.HttpActionResults.ServerError": "0.1.0"
+  },
+
+  "frameworks": {
+    "netstandard1.6": {},
+    "net451": {}
+  }
+}

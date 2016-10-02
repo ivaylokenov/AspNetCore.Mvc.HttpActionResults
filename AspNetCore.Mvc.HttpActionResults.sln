@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0250AF09-DBA6-4024-B551-56B65338BC67}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "globals", "globals", "{9CBF7DB8-D11C-4EA9-A3BB-EDCA14423546}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AspNetCore.Mvc.HttpActionResults", "src\AspNetCore.Mvc.HttpActionResults\AspNetCore.Mvc.HttpActionResults.xproj", "{83AFFF70-971B-41BB-9D32-B88B8965B475}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{83AFFF70-971B-41BB-9D32-B88B8965B475}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83AFFF70-971B-41BB-9D32-B88B8965B475}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83AFFF70-971B-41BB-9D32-B88B8965B475}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83AFFF70-971B-41BB-9D32-B88B8965B475}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{83AFFF70-971B-41BB-9D32-B88B8965B475} = {0250AF09-DBA6-4024-B551-56B65338BC67}
+	EndGlobalSection
+EndGlobal
