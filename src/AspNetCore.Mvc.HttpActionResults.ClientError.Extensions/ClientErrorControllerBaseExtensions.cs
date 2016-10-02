@@ -6,7 +6,7 @@
     public static class ClientErrorControllerBaseExtensions
     {
         /// <summary>
-        /// Creates an <see cref="PreconditionFailedResult"/> object that produces a Precondition Failed (412) response.
+        /// Creates a <see cref="PreconditionFailedResult"/> object that produces a Precondition Failed (412) response.
         /// </summary>
         /// <param name="controller">MVC controller instance.</param>
         /// <returns>The created <see cref="PreconditionFailedResult"/> for the response.</returns>
@@ -14,7 +14,7 @@
             => new PreconditionFailedResult();
 
         /// <summary>
-        /// Creates an <see cref="PreconditionFailedObjectResult"/> object that produces a Precondition Failed (412) response.
+        /// Creates a <see cref="PreconditionFailedObjectResult"/> object that produces a Precondition Failed (412) response.
         /// </summary>
         /// <param name="controller">MVC controller instance.</param>
         /// <param name="value">The precondition failed value to format in the entity body.</param>

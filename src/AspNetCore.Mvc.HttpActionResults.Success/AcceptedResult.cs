@@ -6,7 +6,7 @@
     using Net.Http.Headers;
 
     /// <summary>
-    /// An <see cref="StatusCodeResult"/> that when executed will produce an empty
+    /// A <see cref="StatusCodeResult"/> that when executed will produce an empty
     /// <see cref="StatusCodes.Status202Accepted"/> response.
     /// </summary>
     public class AcceptedResult : StatusCodeResult
