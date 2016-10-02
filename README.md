@@ -1,4 +1,4 @@
-<h1><img src="https://raw.githubusercontent.com/ivaylokenov/AspNetCore.Mvc.HttpActionResults/master/tools/logo.png" align="left" alt="AspNetCore.Mvc.HttpActionResults" width="100">&nbsp; AspNetCore.Mvc.HttpActionResults - HTTP status <br />&nbsp; code results for ASP.NET Core MVC<br />&nbsp;</h1>
+<h1><img src="https://raw.githubusercontent.com/ivaylokenov/AspNetCore.Mvc.HttpActionResults/master/tools/logo.png" align="left" alt="AspNetCore.Mvc.HttpActionResults" width="100">&nbsp; AspNetCore.Mvc.HttpActionResults - HTTP <br />&nbsp; status code results for ASP.NET Core MVC<br />&nbsp;</h1>
 ====================================
 
 AspNetCore.Mvc.HttpActionResults is a collection of HTTP status code action results and controller extension methods for [ASP.NET Core MVC](https://github.com/aspnet/Mvc). Implemented as per the [HTTP status code specifications](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
