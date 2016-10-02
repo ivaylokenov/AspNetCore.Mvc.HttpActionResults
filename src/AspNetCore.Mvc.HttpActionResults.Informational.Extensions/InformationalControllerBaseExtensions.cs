@@ -10,7 +10,7 @@
         /// </summary>
         /// <param name="controller">MVC controller instance.</param>
         /// <returns>The created <see cref="ContinueResult"/> for the response.</returns>
-        public static ContinueResult PreconditionFailed(this ControllerBase controller)
+        public static ContinueResult Continue(this ControllerBase controller)
             => new ContinueResult();
     }
 }
