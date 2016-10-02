@@ -1,7 +1,7 @@
-<h1><img src="https://raw.githubusercontent.com/ivaylokenov/AspNetCore.Mvc.HttpActionResults/master/tools/logo.png" align="left" alt="AspNetCore.Mvc.HttpActionResults" width="100">&nbsp; AspNetCore.Mvc.HttpActionResults - HTTP status code <br /> results for ASP.NET Core MVC<br />&nbsp;</h1>
+<h1><img src="https://raw.githubusercontent.com/ivaylokenov/AspNetCore.Mvc.HttpActionResults/master/tools/logo.png" align="left" alt="AspNetCore.Mvc.HttpActionResults" width="100">&nbsp; AspNetCore.Mvc.HttpActionResults - HTTP status <br />&nbsp; code results for ASP.NET Core MVC<br />&nbsp;</h1>
 ====================================
 
-AspNetCore.Mvc.HttpActionResults is a collection of HTTP status code action results and extension methods for [ASP.NET Core MVC](https://github.com/aspnet/Mvc).
+AspNetCore.Mvc.HttpActionResults is a collection of HTTP status code action results and controller extension methods for [ASP.NET Core MVC](https://github.com/aspnet/Mvc). Implemented as per the [HTTP status code specifications](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
 
 ## Installation
 
@@ -19,7 +19,7 @@ This package will include all available action results and extension methods in 
  - `AspNetCore.Mvc.HttpActionResults.ClientError` - Contains Client Error (4xx) HTTP action results
  - `AspNetCore.Mvc.HttpActionResults.ServerError` - Contains Server Error (5xx) HTTP action results
  
-### ControllerBase extension method packages:
+### ControllerBase extension methods packages:
 
  - `AspNetCore.Mvc.HttpActionResults.Informational.Extensions` - Contains Informational (1xx) HTTP extension methods
  - `AspNetCore.Mvc.HttpActionResults.Success.Extensions` - Contains Success (2xx) HTTP extension methods
@@ -38,13 +38,16 @@ After the downloading is complete, you can use the provided action results and c
 ContinueResult
 
 // 202 Accepted
-AcceptedResult, AcceptedObjectResult
+AcceptedResult
+AcceptedObjectResult
 
 // 303 See Other
-SeeOtherResult, SeeOtherObjectResult
+SeeOtherResult
+SeeOtherObjectResult
 
 // 412 Precondition Failed
-PreconditionFailedResult, PreconditionFailedObjectResult
+PreconditionFailedResult
+PreconditionFailedObjectResult
 
 // 501 Not Implemented
 NotImplementedResult
