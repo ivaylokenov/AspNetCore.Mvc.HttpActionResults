@@ -6,7 +6,7 @@
     public static class SuccessControllerBaseExtensions
     {
         /// <summary>
-        /// Creates an <see cref="AcceptedResult"/> object that produces a Accepted (202) response.
+        /// Creates an <see cref="AcceptedResult"/> object that produces an Accepted (202) response.
         /// </summary>
         /// <param name="controller">MVC controller instance.</param>
         /// <returns>The created <see cref="AcceptedResult"/> for the response.</returns>
@@ -14,7 +14,7 @@
             => new AcceptedResult();
 
         /// <summary>
-        /// Creates an <see cref="AcceptedResult"/> object that produces a Accepted (202) response.
+        /// Creates an <see cref="AcceptedResult"/> object that produces an Accepted (202) response.
         /// </summary>
         /// <param name="controller">MVC controller instance.</param>
         /// <param name="uri">The URI at which the content has been accepted.</param>
@@ -23,7 +23,7 @@
             => new AcceptedResult(uri);
 
         /// <summary>
-        /// Creates an <see cref="AcceptedObjectResult"/> object that produces a Accepted (202) response.
+        /// Creates an <see cref="AcceptedObjectResult"/> object that produces an Accepted (202) response.
         /// </summary>
         /// <param name="controller">MVC controller instance.</param>
         /// <param name="value">The accepted value to format in the entity body.</param>
@@ -32,7 +32,7 @@
             => new AcceptedObjectResult(value);
 
         /// <summary>
-        /// Creates an <see cref="AcceptedObjectResult"/> object that produces a Accepted (202) response.
+        /// Creates an <see cref="AcceptedObjectResult"/> object that produces an Accepted (202) response.
         /// </summary>
         /// <param name="controller">MVC controller instance.</param>
         /// <param name="uri">The URI at which the content has been accepted.</param>
