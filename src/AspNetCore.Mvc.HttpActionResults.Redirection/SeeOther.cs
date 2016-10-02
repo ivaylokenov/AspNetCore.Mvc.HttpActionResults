@@ -6,26 +6,26 @@
     using Net.Http.Headers;
 
     /// <summary>
-    /// A <see cref="StatusCodeResult"/> that when executed will produce an empty
-    /// <see cref="StatusCodes.Status202Accepted"/> response.
+    /// An <see cref="StatusCodeResult"/>  that when executed will produce an empty
+    /// <see cref="StatusCodes.Status303SeeOther"/> response.
     /// </summary>
-    public class AcceptedResult : StatusCodeResult
+    public class SeeOtherResult : StatusCodeResult
     {
         private readonly string location;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AcceptedResult"/> class.
+        /// Initializes a new instance of the <see cref="SeeOtherResult"/> class.
         /// </summary>
-        public AcceptedResult()
-            :base(StatusCodes.Status202Accepted)
+        public SeeOtherResult()
+            : base(StatusCodes.Status303SeeOther)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AcceptedResult"/> class.
+        /// Initializes a new instance of the <see cref="SeeOtherResult"/> class.
         /// </summary>
         /// <param name="location">Location to put in the response header.</param>
-        public AcceptedResult(string location)
+        public SeeOtherResult(string location)
             : this()
         {
             this.location = location;
