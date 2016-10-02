@@ -1,5 +1,28 @@
 ﻿{
   "version": "0.1.0",
+  "title": "ASP.NET Core MVC Informational HTTP Extensions",
+  "copyright": "2016 Ivaylo Kenov",
+  "description": "AspNetCore.Mvc.HttpActionResults.Informational.Extensions is a collection of informational HTTP status code extension methods for ASP.NET Core MVC. See the project repository for more information and available features.",
+  "authors": [ "Ivaylo Kenov" ],
+  "packOptions": {
+    "owners": [ "Ivaylo Kenov" ],
+    "summary": "A collection of informational HTTP status code extension methods for ASP.NET Core MVC.",
+    "tags": [ "asp.net core mvc http action result" ],
+    "projectUrl": "https://github.com/ivaylokenov/AspNetCore.Mvc.HttpActionResults",
+    "licenseUrl": "https://github.com/ivaylokenov/AspNetCore.Mvc.HttpActionResults/blob/master/LICENSE",
+    "iconUrl": "https://raw.githubusercontent.com/ivaylokenov/AspNetCore.Mvc.HttpActionResults/master/tools/nuget-logo.png",
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/ivaylokenov/AspNetCore.Mvc.HttpActionResults"
+    }
+  },
+
+  "buildOptions": {
+    "warningsAsErrors": true,
+    "xmlDoc": true,
+    "optimize": true,
+    "keyFile": "../../tools/Key.snk"
+  },
 
   "dependencies": {
     "AspNetCore.Mvc.HttpActionResults.Informational": "0.1.0"

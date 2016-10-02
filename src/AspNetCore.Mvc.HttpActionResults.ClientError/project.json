@@ -1,5 +1,28 @@
 ﻿{
   "version": "0.1.0",
+  "title": "ASP.NET Core MVC Client Error HTTP Action Results",
+  "copyright": "2016 Ivaylo Kenov",
+  "description": "AspNetCore.Mvc.HttpActionResults.ClientError is a collection of client error HTTP status code action results for ASP.NET Core MVC. See the project repository for more information and available features.",
+  "authors": [ "Ivaylo Kenov" ],
+  "packOptions": {
+    "owners": [ "Ivaylo Kenov" ],
+    "summary": "A collection of client error HTTP status code action results for ASP.NET Core MVC.",
+    "tags": [ "asp.net core mvc http action result" ],
+    "projectUrl": "https://github.com/ivaylokenov/AspNetCore.Mvc.HttpActionResults",
+    "licenseUrl": "https://github.com/ivaylokenov/AspNetCore.Mvc.HttpActionResults/blob/master/LICENSE",
+    "iconUrl": "https://raw.githubusercontent.com/ivaylokenov/AspNetCore.Mvc.HttpActionResults/master/tools/nuget-logo.png",
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/ivaylokenov/AspNetCore.Mvc.HttpActionResults"
+    }
+  },
+
+  "buildOptions": {
+    "warningsAsErrors": true,
+    "xmlDoc": true,
+    "optimize": true,
+    "keyFile": "../../tools/Key.snk"
+  },
 
   "dependencies": {
     "Microsoft.AspNetCore.Mvc.Core": "1.0.1"
