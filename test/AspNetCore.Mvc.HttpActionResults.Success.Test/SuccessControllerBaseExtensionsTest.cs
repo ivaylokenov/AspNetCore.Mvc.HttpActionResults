@@ -1,4 +1,4 @@
-﻿namespace AspNetCore.Mvc.HttpActionResults.Success.Extensions.Test
+﻿namespace AspNetCore.Mvc.HttpActionResults.Success.Test
 {
     using Microsoft.AspNetCore.Mvc;
     using Xunit;

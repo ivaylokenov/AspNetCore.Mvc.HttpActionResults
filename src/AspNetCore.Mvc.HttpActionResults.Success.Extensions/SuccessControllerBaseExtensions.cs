@@ -1,7 +1,7 @@
 ﻿namespace Microsoft.AspNetCore.Mvc
 {
     /// <summary>
-    /// Class containing extensions methods for <see cref="ControllerBase"/>. 
+    /// Class containing success HTTP response extensions methods for <see cref="ControllerBase"/>. 
     /// </summary>
     public static class SuccessControllerBaseExtensions
     {
