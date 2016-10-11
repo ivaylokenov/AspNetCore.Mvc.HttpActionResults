@@ -12,5 +12,14 @@
         /// <returns>The created <see cref="ContinueResult"/> for the response.</returns>
         public static ContinueResult Continue(this ControllerBase controller)
             => new ContinueResult();
+
+        /// <summary>
+        /// Creates a <see cref="SwitchingProtocolsResult"/> object that produces a Switching Protocols (101) response.
+        /// </summary>
+        /// <param name="controller">MVC controller instance.</param>
+        /// <param name="upgradeTo">The protocol to which the communication is upgraded.</param>
+        /// <returns>The created <see cref="SwitchingProtocolsResult"/> for the response.</returns>
+        public static SwitchingProtocolsResult SwitchingProtocols(this ControllerBase controller, string upgradeTo)
+            => new SwitchingProtocolsResult(upgradeTo);
     }
 }

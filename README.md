@@ -37,6 +37,9 @@ After the downloading is complete, you can use the provided action results and c
 // 100 Continue
 ContinueResult
 
+// 101 Switching Protocols
+SwitchingProtocolsResult
+
 // 202 Accepted
 AcceptedResult
 AcceptedObjectResult
@@ -58,6 +61,9 @@ NotImplementedResult
 ```c#
 // returns 100 Continue
 controller.Continue();
+
+// returns 101 Switching Protocols
+controller.SwitchingProtocols(upgradeValue);
 
 // returns 202 Accepted
 controller.Accepted();
@@ -92,7 +98,7 @@ controller.PreconditionFailed(someObject);
 // returns 415 Unsupported Media Type
 controller.UnsupportedMediaType();
 
-// returns 501 Not Implemented Type
+// returns 501 Not Implemented
 controller.NotImplemented();
 ```
 
