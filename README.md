@@ -51,6 +51,9 @@ SeeOtherObjectResult
 // 304 Not Modified
 NotModifiedResult
 
+// 405 Method Not Allowed
+MethodNotAllowedResult
+
 // 412 Precondition Failed
 PreconditionFailedResult
 PreconditionFailedObjectResult
@@ -94,6 +97,9 @@ controller.SeeOther(someUri, someObject);
 
 // returns 304 Not Modified
 controller.NotModified();
+
+// returns 405 Method Not Allowed
+controller.MethodNotAllowed();
 
 // returns 412 Precondition Failed
 controller.PreconditionFailed();

@@ -1,9 +1,9 @@
 ﻿namespace Microsoft.AspNetCore.Mvc
 {
-    using System.Threading.Tasks;
     using Extensions.Primitives;
     using Http;
     using Net.Http.Headers;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// An <see cref="StatusCodeResult"/> that when executed will produce an empty
@@ -11,8 +11,6 @@
     /// </summary>
     public class SeeOtherResult : StatusCodeResult
     {
-        private readonly string location;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="SeeOtherResult"/> class.
         /// </summary>
@@ -28,15 +26,20 @@
         public SeeOtherResult(string location)
             : this()
         {
-            this.location = location;
+            this.Location = location;
         }
+
+        /// <summary>
+        /// Gets or sets the location to put in the response header.
+        /// </summary>
+        public string Location { get; set; }
 
         /// <inheritdoc />
         public override Task ExecuteResultAsync(ActionContext context)
         {
-            if (!string.IsNullOrEmpty(this.location))
+            if (!string.IsNullOrWhiteSpace(this.Location))
             {
-                context.HttpContext.Response.Headers.Add(HeaderNames.Location, new StringValues(this.location));
+                context.HttpContext.Response.Headers.Add(HeaderNames.Location, new StringValues(this.Location));
             }
 
             return base.ExecuteResultAsync(context);

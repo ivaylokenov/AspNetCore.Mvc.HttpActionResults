@@ -1,5 +1,5 @@
 ﻿{
-  "version": "0.1.1",
+  "version": "0.2.0",
   "title": "ASP.NET Core MVC Server Error HTTP Action Results",
   "copyright": "2016 Ivaylo Kenov",
   "description": "AspNetCore.Mvc.HttpActionResults.ServerError is a collection of server error HTTP status code action results for ASP.NET Core MVC. See the project repository for more information and available features.",

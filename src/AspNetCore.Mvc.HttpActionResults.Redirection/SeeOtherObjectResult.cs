@@ -10,8 +10,6 @@
     /// </summary>
     public class SeeOtherObjectResult : ObjectResult
     {
-        private readonly string location;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="SeeOtherObjectResult"/> class.
         /// </summary>
@@ -30,17 +28,22 @@
         public SeeOtherObjectResult(string location, object value)
             : this(value)
         {
-            this.location = location;
+            this.Location = location;
         }
+
+        /// <summary>
+        /// Gets or sets the location to put in the response header.
+        /// </summary>
+        public string Location { get; set; }
 
         /// <inheritdoc />
         public override void OnFormatting(ActionContext context)
         {
             base.OnFormatting(context);
 
-            if (!string.IsNullOrEmpty(this.location))
+            if (!string.IsNullOrEmpty(this.Location))
             {
-                context.HttpContext.Response.Headers.Add(HeaderNames.Location, new StringValues(this.location));
+                context.HttpContext.Response.Headers.Add(HeaderNames.Location, new StringValues(this.Location));
             }
         }
     }

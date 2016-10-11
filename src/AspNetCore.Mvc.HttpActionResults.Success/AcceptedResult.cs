@@ -11,8 +11,6 @@
     /// </summary>
     public class AcceptedResult : StatusCodeResult
     {
-        private readonly string location;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="AcceptedResult"/> class.
         /// </summary>
@@ -28,15 +26,20 @@
         public AcceptedResult(string location)
             : this()
         {
-            this.location = location;
+            this.Location = location;
         }
+
+        /// <summary>
+        /// Gets or sets the location to put in the response header.
+        /// </summary>
+        public string Location { get; set; }
 
         /// <inheritdoc />
         public override Task ExecuteResultAsync(ActionContext context)
         {
-            if (!string.IsNullOrEmpty(this.location))
+            if (!string.IsNullOrEmpty(this.Location))
             {
-                context.HttpContext.Response.Headers.Add(HeaderNames.Location, new StringValues(this.location));
+                context.HttpContext.Response.Headers.Add(HeaderNames.Location, new StringValues(this.Location));
             }
 
             return base.ExecuteResultAsync(context);

@@ -1,5 +1,5 @@
 ﻿{
-  "version": "0.1.1",
+  "version": "0.2.0",
   "title": "ASP.NET Core MVC HTTP Action Results",
   "copyright": "2016 Ivaylo Kenov",
   "description": "AspNetCore.Mvc.HttpActionResults is a collection of HTTP status code action results and extension methods for ASP.NET Core MVC. See the project repository for more information and available features.",
@@ -25,11 +25,11 @@
   },
 
   "dependencies": {
-    "AspNetCore.Mvc.HttpActionResults.Informational.Extensions": "0.1.1",
-    "AspNetCore.Mvc.HttpActionResults.Success.Extensions": "0.1.1",
-    "AspNetCore.Mvc.HttpActionResults.Redirection.Extensions": "0.1.1",
-    "AspNetCore.Mvc.HttpActionResults.ClientError.Extensions": "0.1.1",
-    "AspNetCore.Mvc.HttpActionResults.ServerError.Extensions": "0.1.1"
+    "AspNetCore.Mvc.HttpActionResults.Informational.Extensions": "0.2.0",
+    "AspNetCore.Mvc.HttpActionResults.Success.Extensions": "0.2.0",
+    "AspNetCore.Mvc.HttpActionResults.Redirection.Extensions": "0.2.0",
+    "AspNetCore.Mvc.HttpActionResults.ClientError.Extensions": "0.2.0",
+    "AspNetCore.Mvc.HttpActionResults.ServerError.Extensions": "0.2.0"
   },
 
   "frameworks": {

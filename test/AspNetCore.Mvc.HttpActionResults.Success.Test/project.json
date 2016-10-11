@@ -8,7 +8,7 @@
   "dependencies": {
     "dotnet-test-xunit": "2.2.0-*",
     "xunit": "2.2.0-*",
-    "AspNetCore.Mvc.HttpActionResults.Success.Extensions": "0.1.1"
+    "AspNetCore.Mvc.HttpActionResults.Success.Extensions": "0.2.0"
   },
 
   "frameworks": {
