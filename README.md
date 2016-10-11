@@ -48,6 +48,9 @@ AcceptedObjectResult
 SeeOtherResult
 SeeOtherObjectResult
 
+// 304 Not Modified
+NotModifiedResult
+
 // 412 Precondition Failed
 PreconditionFailedResult
 PreconditionFailedObjectResult
@@ -88,6 +91,9 @@ controller.SeeOther(someObject);
 
 // returns 303 See Other with Location header and formatted value
 controller.SeeOther(someUri, someObject);
+
+// returns 304 Not Modified
+controller.NotModified();
 
 // returns 412 Precondition Failed
 controller.PreconditionFailed();

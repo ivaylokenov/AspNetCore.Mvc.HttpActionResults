@@ -6,7 +6,7 @@
     public static class RedirectionControllerBaseExtensions
     {
         /// <summary>
-        /// Creates an <see cref="SeeOtherResult"/> object that produces an See Other (303) response.
+        /// Creates an <see cref="SeeOtherResult"/> object that produces a See Other (303) response.
         /// </summary>
         /// <param name="controller">MVC controller instance.</param>
         /// <returns>The created <see cref="SeeOtherResult"/> for the response.</returns>
@@ -14,7 +14,7 @@
             => new SeeOtherResult();
 
         /// <summary>
-        /// Creates an <see cref="SeeOtherResult"/> object that produces an See Other (303) response.
+        /// Creates an <see cref="SeeOtherResult"/> object that produces a See Other (303) response.
         /// </summary>
         /// <param name="controller">MVC controller instance.</param>
         /// <param name="uri">The URI at which the content has been created.</param>
@@ -23,7 +23,7 @@
             => new SeeOtherResult(uri);
 
         /// <summary>
-        /// Creates an <see cref="SeeOtherObjectResult"/> object that produces an See Other (303) response.
+        /// Creates an <see cref="SeeOtherObjectResult"/> object that produces a See Other (303) response.
         /// </summary>
         /// <param name="controller">MVC controller instance.</param>
         /// <param name="value">The accepted value to format in the entity body.</param>
@@ -32,7 +32,7 @@
             => new SeeOtherObjectResult(value);
 
         /// <summary>
-        /// Creates an <see cref="SeeOtherObjectResult"/> object that produces an See Other (303) response.
+        /// Creates an <see cref="SeeOtherObjectResult"/> object that produces a See Other (303) response.
         /// </summary>
         /// <param name="controller">MVC controller instance.</param>
         /// <param name="uri">The URI at which the content has been created.</param>
@@ -40,5 +40,13 @@
         /// <returns>The created <see cref="SeeOtherObjectResult"/> for the response.</returns>
         public static SeeOtherObjectResult SeeOther(this ControllerBase controller, string uri, object value)
             => new SeeOtherObjectResult(uri, value);
+
+        /// <summary>
+        /// Creates an <see cref="NotModifiedResult"/> object that produces a Not Modified (304) response.
+        /// </summary>
+        /// <param name="controller"></param>
+        /// <returns></returns>
+        public static NotModifiedResult NotModified(this ControllerBase controller)
+            => new NotModifiedResult();
     }
 }
