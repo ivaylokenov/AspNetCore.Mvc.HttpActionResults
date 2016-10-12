@@ -28,6 +28,31 @@
         }
 
         [Fact]
+        public void ServiceUnavailableShouldReturnServiceUnavailableResult()
+        {
+            var controller = new HomeController();
+
+            var result = controller.TestServiceUnavailableResult();
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<ServiceUnavailableResult>(result);
+        }
+
+        [Fact]
+        public void ServiceUnavailableShouldReturnServiceUnavailableResultWithLengthOfDelay()
+        {
+            var controller = new HomeController();
+
+            var lengthOfDelay = "10";
+            var result = controller.TestServiceUnavailableResultWithLengthOfDelay(lengthOfDelay);
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<ServiceUnavailableResult>(result);
+            var actionResult = (ServiceUnavailableResult)result;
+            Assert.Equal(actionResult.LengthOfDelay, lengthOfDelay);
+        }
+
+        [Fact]
         public void GatewayTimeoutShouldReturnGatewayTimeoutResult()
         {
             var controller = new HomeController();
@@ -48,6 +73,16 @@
             public IActionResult TestBadGatewayResult()
             {
                 return this.BadGateway();
+            }
+
+            public IActionResult TestServiceUnavailableResult()
+            {
+                return this.ServiceUnavailable();
+            }
+
+            public IActionResult TestServiceUnavailableResultWithLengthOfDelay(string lengthOfDelay)
+            {
+                return this.ServiceUnavailable(lengthOfDelay);
             }
 
             public IActionResult TestGatewayTimeoutResult()

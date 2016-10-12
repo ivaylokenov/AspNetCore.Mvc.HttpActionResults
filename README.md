@@ -70,6 +70,9 @@ NotImplementedResult
 // 502 Bad Gateway
 BadGatewayResult
 
+// 503 Service Unavailable
+ServiceUnavailableResult
+
 // 504 Gateway Timeout
 GatewayTimeoutResult
 ```
@@ -133,6 +136,9 @@ controller.NotImplemented();
 
 // returns 502 Bad Gateway
 controller.BadGateway();
+
+// returns 503 Service Unavailable
+controller.ServiceUnavailable();
 
 // returns 504 Gateway Timeout
 controller.GatewayTimeout();
