@@ -6,6 +6,17 @@
     public class ClientErrorControllerBaseExtensionsTest
     {
         [Fact]
+        public void LengthRequiredShouldReturnLengthRequiredResult()
+        {
+            var controller = new HomeController();
+
+            var result = controller.TestLengthRequiredResult();
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<LengthRequiredResult>(result);
+        }
+
+        [Fact]
         public void UnsupportedMediaTypeShouldReturnUnsupportedMediaTypeResult()
         {
             var controller = new HomeController();
@@ -29,6 +40,11 @@
 
         private class HomeController : ControllerBase
         {
+            public IActionResult TestLengthRequiredResult()
+            {
+                return this.LengthRequired();
+            }
+
             public IActionResult TestUnsupportedMediaTypeResult()
             {
                 return this.UnsupportedMediaType();

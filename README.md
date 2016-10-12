@@ -57,6 +57,9 @@ MethodNotAllowedResult
 // 408 Request Timeout
 RequestTimeoutResult
 
+// 411 Length Required
+LengthRequiredResult
+
 // 412 Precondition Failed
 PreconditionFailedResult
 PreconditionFailedObjectResult
@@ -112,6 +115,9 @@ controller.MethodNotAllowed();
 
 // returns 408 Request Timeout
 controller.RequestTimeout();
+
+// returns 411 Length Required
+controller.LengthRequired();
 
 // returns 412 Precondition Failed
 controller.PreconditionFailed();
