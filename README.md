@@ -63,6 +63,12 @@ PreconditionFailedObjectResult
 
 // 501 Not Implemented
 NotImplementedResult
+
+// 502 Bad Gateway
+BadGatewayResult
+
+// 504 Gateway Timeout
+GatewayTimeoutResult
 ```
 
 ### Available ControllerBase extension methods:
@@ -118,6 +124,12 @@ controller.UnsupportedMediaType();
 
 // returns 501 Not Implemented
 controller.NotImplemented();
+
+// returns 502 Bad Gateway
+controller.BadGateway();
+
+// returns 504 Gateway Timeout
+controller.GatewayTimeout();
 ```
 
 ## License
