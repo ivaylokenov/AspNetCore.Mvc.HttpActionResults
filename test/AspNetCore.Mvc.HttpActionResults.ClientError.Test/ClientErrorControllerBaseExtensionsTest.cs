@@ -6,7 +6,7 @@
     public class ClientErrorControllerBaseExtensionsTest
     {
         [Fact]
-        public void AcceptedShouldReturnAcceptedResult()
+        public void UnsupportedMediaTypeShouldReturnUnsupportedMediaTypeResult()
         {
             var controller = new HomeController();
 
@@ -16,11 +16,27 @@
             Assert.IsAssignableFrom<UnsupportedMediaTypeResult>(result);
         }
 
+        [Fact]
+        public void RequestTimeoutShouldReturnRequestTimeoutResult()
+        {
+            var controller = new HomeController();
+
+            var result = controller.TestRequestTimeoutResult();
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<RequestTimeoutResult>(result);
+        }
+
         private class HomeController : ControllerBase
         {
             public IActionResult TestUnsupportedMediaTypeResult()
             {
                 return this.UnsupportedMediaType();
+            }
+
+            public IActionResult TestRequestTimeoutResult()
+            {
+                return this.RequestTimeout();
             }
         }
     }

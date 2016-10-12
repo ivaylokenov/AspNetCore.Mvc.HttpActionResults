@@ -54,6 +54,9 @@ NotModifiedResult
 // 405 Method Not Allowed
 MethodNotAllowedResult
 
+// 408 Request Timeout
+RequestTimeoutResult
+
 // 412 Precondition Failed
 PreconditionFailedResult
 PreconditionFailedObjectResult
@@ -100,6 +103,9 @@ controller.NotModified();
 
 // returns 405 Method Not Allowed
 controller.MethodNotAllowed();
+
+// returns 408 Request Timeout
+controller.RequestTimeout();
 
 // returns 412 Precondition Failed
 controller.PreconditionFailed();

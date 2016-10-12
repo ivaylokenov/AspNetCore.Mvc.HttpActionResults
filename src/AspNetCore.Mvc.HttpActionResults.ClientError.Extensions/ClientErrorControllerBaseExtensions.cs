@@ -44,6 +44,14 @@ namespace Microsoft.AspNetCore.Mvc
             => new PreconditionFailedObjectResult(value);
 
         /// <summary>
+        /// Creates a <see cref="RequestTimeoutResult"/> object that produces a Request Timeout (408) response.
+        /// </summary>
+        /// <param name="controller">MVC controller instance.</param>
+        /// <returns>The created <see cref="RequestTimeoutResult"/> for the response.</returns>
+        public static RequestTimeoutResult RequestTimeout(this ControllerBase controller)
+            => new RequestTimeoutResult();
+
+        /// <summary>
         /// Creates an <see cref="UnsupportedMediaTypeResult"/> object that produces an Unsupported Media Type (415) response.
         /// </summary>
         /// <param name="controller">MVC controller instance.</param>
