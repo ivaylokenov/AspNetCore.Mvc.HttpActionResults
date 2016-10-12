@@ -128,7 +128,7 @@ controller.NotImplemented();
 // returns 502 Bad Gateway
 controller.BadGateway();
 
-// returns 502 Gateway Timeout
+// returns 504 Gateway Timeout
 controller.GatewayTimeout();
 ```
 
