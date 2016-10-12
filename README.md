@@ -63,6 +63,9 @@ PreconditionFailedObjectResult
 
 // 501 Not Implemented
 NotImplementedResult
+
+// 502 Bad Getaway
+BadGetawayResult
 ```
 
 ### Available ControllerBase extension methods:
@@ -118,6 +121,9 @@ controller.UnsupportedMediaType();
 
 // returns 501 Not Implemented
 controller.NotImplemented();
+
+// returns 502 Bad Getaway
+controller.BadGetaway();
 ```
 
 ## License
