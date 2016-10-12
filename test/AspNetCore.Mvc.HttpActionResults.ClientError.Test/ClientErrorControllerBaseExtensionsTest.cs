@@ -54,6 +54,11 @@
             {
                 return this.RequestTimeout();
             }
+
+            public IActionResult TestImATeapotResult()
+            {
+                return this.ImATeapot();
+            }
         }
     }
 }

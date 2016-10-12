@@ -64,6 +64,12 @@ LengthRequiredResult
 PreconditionFailedResult
 PreconditionFailedObjectResult
 
+// 415 Unsupported Media Type
+UnsupportedMediaTypeResult
+
+// 418 Im A Teapot
+ImATeapotResult
+
 // 501 Not Implemented
 NotImplementedResult
 
@@ -130,6 +136,9 @@ controller.PreconditionFailed(someObject);
 
 // returns 415 Unsupported Media Type
 controller.UnsupportedMediaType();
+
+// returns 418 Im A Teapot
+controller.ImATeapot();
 
 // returns 501 Not Implemented
 controller.NotImplemented();

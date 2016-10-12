@@ -66,5 +66,13 @@ namespace Microsoft.AspNetCore.Mvc
         /// <returns>The created <see cref="UnsupportedMediaTypeResult"/> for the response.</returns>
         public static UnsupportedMediaTypeResult UnsupportedMediaType(this ControllerBase controller)
             => new UnsupportedMediaTypeResult();
+
+        /// <summary>
+        /// Creates an <see cref="ImATeapotResult"/> object that produces an Im a Teapot (418) response.
+        /// </summary>
+        /// <param name="controller">MVC controller instance.</param>
+        /// <returns>The created <see cref="ImATeapotResult"/> for the response.</returns>
+        public static ImATeapotResult ImATeapot(this ControllerBase controller)
+            => new ImATeapotResult();
     }
 }
