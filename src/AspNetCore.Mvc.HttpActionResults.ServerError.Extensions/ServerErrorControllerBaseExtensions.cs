@@ -6,6 +6,14 @@
     public static class ServerErrorControllerBaseExtensions
     {
         /// <summary>
+        /// Creates an <see cref="InternalServerErrorResult"/> object that produces an Internal Server Error (500) response.
+        /// </summary>
+        /// <param name="controller">MVC controller instance.</param>
+        /// <returns>The created <see cref="InternalServerErrorResult"/> for the response.</returns>
+        public static InternalServerErrorResult InternalServerError(this ControllerBase controller)
+            => new InternalServerErrorResult();
+
+        /// <summary>
         /// Creates an <see cref="NotImplementedResult"/> object that produces an Not Implemented (501) response.
         /// </summary>
         /// <param name="controller">MVC controller instance.</param>
