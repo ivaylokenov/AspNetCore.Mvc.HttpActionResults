@@ -30,7 +30,7 @@
         }
 
         /// <summary>
-        /// Gets or sets the location to put in the response header.
+        /// Gets or sets the length of the delay to put in the response header.
         /// </summary>
         public string LengthOfDelay { get; set; }
 
