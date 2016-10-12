@@ -35,6 +35,14 @@ namespace Microsoft.AspNetCore.Mvc
             => new PreconditionFailedResult();
 
         /// <summary>
+        /// Creates a <see cref="LengthRequiredResult"/> object that produces a Length Required (411) response.
+        /// </summary>
+        /// <param name="controller">MVC controller instance.</param>
+        /// <returns>The created <see cref="LengthRequiredResult"/> for the response.</returns>
+        public static LengthRequiredResult LengthRequired(this ControllerBase controller)
+            => new LengthRequiredResult();
+
+        /// <summary>
         /// Creates a <see cref="PreconditionFailedObjectResult"/> object that produces a Precondition Failed (412) response.
         /// </summary>
         /// <param name="controller">MVC controller instance.</param>
