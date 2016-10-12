@@ -14,7 +14,7 @@
             => new InternalServerErrorResult();
 
         /// <summary>
-        /// Creates an <see cref="NotImplementedResult"/> object that produces an Not Implemented (501) response.
+        /// Creates an <see cref="NotImplementedResult"/> object that produces a Not Implemented (501) response.
         /// </summary>
         /// <param name="controller">MVC controller instance.</param>
         /// <returns>The created <see cref="NotImplementedResult"/> for the response.</returns>
