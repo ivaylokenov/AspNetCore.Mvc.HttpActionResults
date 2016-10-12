@@ -57,6 +57,9 @@ MethodNotAllowedResult
 // 408 Request Timeout
 RequestTimeoutResult
 
+// 410 Gone
+GoneResult
+
 // 411 Length Required
 LengthRequiredResult
 
@@ -115,6 +118,9 @@ controller.MethodNotAllowed();
 
 // returns 408 Request Timeout
 controller.RequestTimeout();
+
+// returns 410 Gone
+controller.Gone();
 
 // returns 411 Length Required
 controller.LengthRequired();
