@@ -6,21 +6,37 @@
     public class ServerErrorControllerBaseExtensionsTest
     {
         [Fact]
-        public void BadGetawayShouldReturnBadGetawayResult()
+        public void BadGatewayShouldReturnBadGatewayResult()
         {
             var controller = new HomeController();
 
-            var result = controller.TestBadGetawayResult();
+            var result = controller.TestBadGatewayResult();
 
             Assert.NotNull(result);
-            Assert.IsAssignableFrom<BadGetawayResult>(result);
+            Assert.IsAssignableFrom<BadGatewayResult>(result);
+        }
+
+        [Fact]
+        public void GatewayTimeoutShouldReturnGatewayTimeoutResult()
+        {
+            var controller = new HomeController();
+
+            var result = controller.TestGatewayTimeoutResult();
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<GatewayTimeoutResult>(result);
         }
 
         private class HomeController : ControllerBase
         {
-            public IActionResult TestBadGetawayResult()
+            public IActionResult TestBadGatewayResult()
             {
-                return this.BadGetaway();
+                return this.BadGateway();
+            }
+
+            public IActionResult TestGatewayTimeoutResult()
+            {
+                return this.GatewayTimeout();
             }
         }
     }
