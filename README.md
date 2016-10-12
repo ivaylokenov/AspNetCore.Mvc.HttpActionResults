@@ -64,6 +64,9 @@ LengthRequiredResult
 PreconditionFailedResult
 PreconditionFailedObjectResult
 
+// 500 Internal Server Error
+InternalServerErrorResult
+
 // 501 Not Implemented
 NotImplementedResult
 
@@ -127,6 +130,9 @@ controller.PreconditionFailed(someObject);
 
 // returns 415 Unsupported Media Type
 controller.UnsupportedMediaType();
+
+// returns 500 Internal Server Error
+controller.InternalServerError();
 
 // returns 501 Not Implemented
 controller.NotImplemented();
