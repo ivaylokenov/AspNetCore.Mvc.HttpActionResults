@@ -38,6 +38,17 @@
             Assert.IsAssignableFrom<RequestTimeoutResult>(result);
         }
 
+        [Fact]
+        public void ImATeapotShouldReturnImATeapotResult()
+        {
+            var controller = new HomeController();
+
+            var result = controller.TestImATeapotResult();
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<ImATeapotResult>(result);
+        }
+
         private class HomeController : ControllerBase
         {
             public IActionResult TestLengthRequiredResult()

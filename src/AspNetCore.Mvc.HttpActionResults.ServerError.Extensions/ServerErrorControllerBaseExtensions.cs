@@ -45,5 +45,14 @@
         /// <returns>The created <see cref="GatewayTimeoutResult"/> for the response.</returns>
         public static GatewayTimeoutResult GatewayTimeout(this ControllerBase controller)
             => new GatewayTimeoutResult();
+
+        /// <summary>
+        /// Creates a <see cref="HTTPVersionNotSupportedResult"/> object that produces a HTTP Version Not Supported (505) response.
+        /// </summary>
+        /// <param name="controller">MVC controller instance.</param>
+        /// <param name="value">The precondition failed value to format in the entity body.</param>
+        /// <returns>The created <see cref="HTTPVersionNotSupportedResult"/> for the response.</returns>
+        public static HTTPVersionNotSupportedResult HTTPVersionNotSupported(this ControllerBase controller, object value)
+            => new HTTPVersionNotSupportedResult(value);
     }
 }
