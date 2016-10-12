@@ -6,6 +6,17 @@
     public class ServerErrorControllerBaseExtensionsTest
     {
         [Fact]
+        public void NotImplementedShouldReturnNotImplementedResult()
+        {
+            var controller = new HomeController();
+
+            var result = controller.TestNotImplementedResult();
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<NotImplementedResult>(result);
+        }
+
+        [Fact]
         public void BadGatewayShouldReturnBadGatewayResult()
         {
             var controller = new HomeController();
@@ -29,6 +40,11 @@
 
         private class HomeController : ControllerBase
         {
+            public IActionResult TestNotImplementedResult()
+            {
+                return this.NotImplemented();
+            }
+
             public IActionResult TestBadGatewayResult()
             {
                 return this.BadGateway();
