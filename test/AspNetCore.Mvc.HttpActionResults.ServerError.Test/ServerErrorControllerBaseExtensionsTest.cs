@@ -10,7 +10,7 @@
         {
             var controller = new HomeController();
 
-            var result = controller.InternalServerError();
+            var result = controller.TestInternalServerError();
 
             Assert.NotNull(result);
             Assert.IsAssignableFrom<InternalServerErrorResult>(result);
