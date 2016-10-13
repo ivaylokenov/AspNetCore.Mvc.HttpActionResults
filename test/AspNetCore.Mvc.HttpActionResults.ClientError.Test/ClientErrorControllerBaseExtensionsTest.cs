@@ -28,6 +28,31 @@
         }
 
         [Fact]
+        public void ConflictShouldReturnConflictResult()
+        {
+            var controller = new HomeController();
+
+            var result = controller.TestConflictResult();
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<ConflictResult>(result);
+        }
+
+        [Fact]
+        public void ConflictShouldReturnConflictObjectResult()
+        {
+            var controller = new HomeController();
+            const string value = "I'm so fake";
+
+            var result = controller.TestConflictObjectResult(value);
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<ConflictObjectResult>(result);
+            var actionResult = (ConflictObjectResult)result;
+            Assert.Equal(actionResult.Value, value);
+        }
+
+        [Fact]
         public void LengthRequiredShouldReturnLengthRequiredResult()
         {
             var controller = new HomeController();
@@ -81,6 +106,16 @@
             public IActionResult TestGoneResult()
             {
                 return this.Gone();
+            }
+
+            public IActionResult TestConflictResult()
+            {
+                return this.Conflict();
+            }
+
+            public IActionResult TestConflictObjectResult(object data)
+            {
+                return this.Conflict(data);
             }
 
             public IActionResult TestLengthRequiredResult()

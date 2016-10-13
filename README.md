@@ -60,6 +60,10 @@ MethodNotAllowedResult
 // 408 Request Timeout
 RequestTimeoutResult
 
+// 409 Conflict
+ConflictResult
+ConflictObjectResult
+
 // 410 Gone
 GoneResult
 
@@ -139,6 +143,12 @@ controller.MethodNotAllowed();
 
 // returns 408 Request Timeout
 controller.RequestTimeout();
+
+// returns 409 Conflict
+controller.Conflict();
+
+// returns 409 Conflict with formatted value
+controller.Conflict(someObject);
 
 // returns 410 Gone
 controller.Gone();

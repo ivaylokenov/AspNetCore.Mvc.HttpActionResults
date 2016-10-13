@@ -35,6 +35,23 @@ namespace Microsoft.AspNetCore.Mvc
            => new MethodNotAllowedResult(new StringValues(allowedMethods));
 
         /// <summary>
+        /// Creates a <see cref="ConflictResult"/> object that produces a Conflict (409) response.
+        /// </summary>
+        /// <param name="controller">MVC controller instance.</param>
+        /// <returns>The created <see cref="ConflictResult"/> for the response.</returns>
+        public static ConflictResult Conflict(this ControllerBase controller)
+            => new ConflictResult();
+
+        /// <summary>
+        /// Creates a <see cref="ConflictObjectResult"/> object that produces a Conflict (409) response.
+        /// </summary>
+        /// <param name="controller">MVC controller instance.</param>
+        /// <param name="value">Information regarding the source of the conflict.</param>
+        /// <returns>The created <see cref="ConflictObjectResult"/> for the response.</returns>
+        public static ConflictObjectResult Conflict(this ControllerBase controller, object value)
+            => new ConflictObjectResult(value);
+
+        /// <summary>
         /// Creates a <see cref="PreconditionFailedResult"/> object that produces a Precondition Failed (412) response.
         /// </summary>
         /// <param name="controller">MVC controller instance.</param>
