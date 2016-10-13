@@ -63,6 +63,20 @@
             Assert.IsAssignableFrom<GatewayTimeoutResult>(result);
         }
 
+        [Fact]
+        public void HTTPVersionNotSupportedShouldReturnHTTPVersionNotSupportedResult()
+        {
+            var controller = new HomeController();
+            var value = new object { };
+
+            var result = controller.TestHTTPVersionNotSupportedResult(value);
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<HTTPVersionNotSupportedResult>(result);
+            var actionResult = (HTTPVersionNotSupportedResult)result;
+            Assert.Equal(actionResult.Value, value);
+        }
+
         private class HomeController : ControllerBase
         {
             public IActionResult TestNotImplementedResult()
@@ -88,6 +102,11 @@
             public IActionResult TestGatewayTimeoutResult()
             {
                 return this.GatewayTimeout();
+            }
+
+            public IActionResult TestHTTPVersionNotSupportedResult(object value)
+            {
+                return this.HTTPVersionNotSupported(value);
             }
         }
     }
