@@ -28,6 +28,31 @@
         }
 
         [Fact]
+        public void NotAcceptableShouldNotAcceptableResult()
+        {
+            var controller = new HomeController();
+
+            var result = controller.NotAcceptable();
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<NotAcceptableResult>(result);
+        }
+
+        [Fact]
+        public void NotAcceptableShouldReturnNotAcceptableObjectResult()
+        {
+            var controller = new HomeController();
+            const string value = "I'm so fake";
+
+            var result = controller.TestNotAcceptableObjectResult(value);
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<NotAcceptableObjectResult>(result);
+            var actionResult = (NotAcceptableObjectResult)result;
+            Assert.Equal(actionResult.Value, value);
+        }
+
+        [Fact]
         public void LengthRequiredShouldReturnLengthRequiredResult()
         {
             var controller = new HomeController();
@@ -81,6 +106,16 @@
             public IActionResult TestGoneResult()
             {
                 return this.Gone();
+            }
+
+            public IActionResult TestNotAcceptableResult()
+            {
+                return this.NotAcceptable();
+            }
+
+            public IActionResult TestNotAcceptableObjectResult(object data)
+            {
+                return this.NotAcceptable(data);
             }
 
             public IActionResult TestLengthRequiredResult()
