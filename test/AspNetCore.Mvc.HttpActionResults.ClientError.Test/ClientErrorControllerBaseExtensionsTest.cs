@@ -71,6 +71,28 @@
             Assert.IsAssignableFrom<ImATeapotResult>(result);
         }
 
+        [Fact]
+        public void RequestedRangeNotSatisfiableShouldReturnRequestedRangeNotSatisfiableResult()
+        {
+            var controller = new HomeController();
+
+            var result = controller.TestRequestedRangeNotSatisfiableResult();
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<RequestedRangeNotSatisfiableResult>(result);
+        }
+
+        [Fact]
+        public void ExpectationFailedShouldReturnExpectationFailedResult()
+        {
+            var controller = new HomeController();
+
+            var result = controller.TestExpectationFailedResult();
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<ExpectationFailedResult>(result);
+        }
+
         private class HomeController : ControllerBase
         {
             public IActionResult TestPaymentRequiredResult()
@@ -101,6 +123,16 @@
             public IActionResult TestImATeapotResult()
             {
                 return this.ImATeapot();
+            }
+
+            public IActionResult TestRequestedRangeNotSatisfiableResult()
+            {
+                return this.RequestedRangeNotSatisfiable();
+            }
+
+            public IActionResult TestExpectationFailedResult()
+            {
+                return this.ExpectationFailed();
             }
         }
     }
