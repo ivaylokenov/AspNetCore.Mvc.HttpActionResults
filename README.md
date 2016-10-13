@@ -70,6 +70,12 @@ LengthRequiredResult
 PreconditionFailedResult
 PreconditionFailedObjectResult
 
+// 415 Unsupported Media Type
+UnsupportedMediaTypeResult
+
+// 418 Im A Teapot
+ImATeapotResult
+
 // 500 Internal Server Error
 InternalServerErrorResult
 
@@ -79,8 +85,14 @@ NotImplementedResult
 // 502 Bad Gateway
 BadGatewayResult
 
+// 503 Service Unavailable
+ServiceUnavailableResult
+
 // 504 Gateway Timeout
 GatewayTimeoutResult
+
+// 505 HTTP Version Not Supported
+HTTPVersionNotSupportedResult
 ```
 
 ### Available ControllerBase extension methods:
@@ -143,6 +155,9 @@ controller.PreconditionFailed(someObject);
 // returns 415 Unsupported Media Type
 controller.UnsupportedMediaType();
 
+// returns 418 Im A Teapot
+controller.ImATeapot();
+
 // returns 500 Internal Server Error
 controller.InternalServerError();
 
@@ -152,8 +167,14 @@ controller.NotImplemented();
 // returns 502 Bad Gateway
 controller.BadGateway();
 
+// returns 503 Service Unavailable
+controller.ServiceUnavailable();
+
 // returns 504 Gateway Timeout
 controller.GatewayTimeout();
+
+// returns 505 HTTP Version Not Supported
+controller.HTTPVersionNotSupported();
 ```
 
 ## License

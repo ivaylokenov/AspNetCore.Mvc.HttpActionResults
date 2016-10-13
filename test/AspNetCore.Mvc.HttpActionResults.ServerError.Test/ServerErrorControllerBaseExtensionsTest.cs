@@ -39,6 +39,31 @@
         }
 
         [Fact]
+        public void ServiceUnavailableShouldReturnServiceUnavailableResult()
+        {
+            var controller = new HomeController();
+
+            var result = controller.TestServiceUnavailableResult();
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<ServiceUnavailableResult>(result);
+        }
+
+        [Fact]
+        public void ServiceUnavailableShouldReturnServiceUnavailableResultWithLengthOfDelay()
+        {
+            var controller = new HomeController();
+
+            var lengthOfDelay = "10";
+            var result = controller.TestServiceUnavailableResultWithLengthOfDelay(lengthOfDelay);
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<ServiceUnavailableResult>(result);
+            var actionResult = (ServiceUnavailableResult)result;
+            Assert.Equal(actionResult.LengthOfDelay, lengthOfDelay);
+        }
+
+        [Fact]
         public void GatewayTimeoutShouldReturnGatewayTimeoutResult()
         {
             var controller = new HomeController();
@@ -47,6 +72,20 @@
 
             Assert.NotNull(result);
             Assert.IsAssignableFrom<GatewayTimeoutResult>(result);
+        }
+
+        [Fact]
+        public void HTTPVersionNotSupportedShouldReturnHTTPVersionNotSupportedResult()
+        {
+            var controller = new HomeController();
+            var value = new object { };
+
+            var result = controller.TestHTTPVersionNotSupportedResult(value);
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<HTTPVersionNotSupportedResult>(result);
+            var actionResult = (HTTPVersionNotSupportedResult)result;
+            Assert.Equal(actionResult.Value, value);
         }
 
         private class HomeController : ControllerBase
@@ -66,9 +105,24 @@
                 return this.BadGateway();
             }
 
+            public IActionResult TestServiceUnavailableResult()
+            {
+                return this.ServiceUnavailable();
+            }
+
+            public IActionResult TestServiceUnavailableResultWithLengthOfDelay(string lengthOfDelay)
+            {
+                return this.ServiceUnavailable(lengthOfDelay);
+            }
+
             public IActionResult TestGatewayTimeoutResult()
             {
                 return this.GatewayTimeout();
+            }
+
+            public IActionResult TestHTTPVersionNotSupportedResult(object value)
+            {
+                return this.HTTPVersionNotSupported(value);
             }
         }
     }

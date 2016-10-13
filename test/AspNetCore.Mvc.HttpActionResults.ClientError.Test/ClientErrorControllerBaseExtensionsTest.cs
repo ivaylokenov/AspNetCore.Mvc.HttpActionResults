@@ -60,6 +60,17 @@
             Assert.IsAssignableFrom<RequestTimeoutResult>(result);
         }
 
+        [Fact]
+        public void ImATeapotShouldReturnImATeapotResult()
+        {
+            var controller = new HomeController();
+
+            var result = controller.TestImATeapotResult();
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<ImATeapotResult>(result);
+        }
+
         private class HomeController : ControllerBase
         {
             public IActionResult TestPaymentRequiredResult()
@@ -85,6 +96,11 @@
             public IActionResult TestRequestTimeoutResult()
             {
                 return this.RequestTimeout();
+            }
+
+            public IActionResult TestImATeapotResult()
+            {
+                return this.ImATeapot();
             }
         }
     }
