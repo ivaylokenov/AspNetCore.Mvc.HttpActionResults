@@ -57,6 +57,9 @@ MethodNotAllowedResult
 // 408 Request Timeout
 RequestTimeoutResult
 
+// 410 Gone
+GoneResult
+
 // 411 Length Required
 LengthRequiredResult
 
@@ -69,6 +72,9 @@ UnsupportedMediaTypeResult
 
 // 418 Im A Teapot
 ImATeapotResult
+
+// 500 Internal Server Error
+InternalServerErrorResult
 
 // 501 Not Implemented
 NotImplementedResult
@@ -128,6 +134,9 @@ controller.MethodNotAllowed();
 // returns 408 Request Timeout
 controller.RequestTimeout();
 
+// returns 410 Gone
+controller.Gone();
+
 // returns 411 Length Required
 controller.LengthRequired();
 
@@ -142,6 +151,9 @@ controller.UnsupportedMediaType();
 
 // returns 418 Im A Teapot
 controller.ImATeapot();
+
+// returns 500 Internal Server Error
+controller.InternalServerError();
 
 // returns 501 Not Implemented
 controller.NotImplemented();

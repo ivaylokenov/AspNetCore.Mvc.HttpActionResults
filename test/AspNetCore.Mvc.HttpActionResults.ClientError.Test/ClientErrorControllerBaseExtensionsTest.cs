@@ -6,6 +6,17 @@
     public class ClientErrorControllerBaseExtensionsTest
     {
         [Fact]
+        public void GoneShouldReturnGoneResult()
+        {
+            var controller = new HomeController();
+
+            var result = controller.TestGoneResult();
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<GoneResult>(result);
+        }
+
+        [Fact]
         public void LengthRequiredShouldReturnLengthRequiredResult()
         {
             var controller = new HomeController();
@@ -51,6 +62,11 @@
 
         private class HomeController : ControllerBase
         {
+            public IActionResult TestGoneResult()
+            {
+                return this.Gone();
+            }
+
             public IActionResult TestLengthRequiredResult()
             {
                 return this.LengthRequired();

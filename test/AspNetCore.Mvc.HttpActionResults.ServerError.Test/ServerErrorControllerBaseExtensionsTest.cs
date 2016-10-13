@@ -6,6 +6,17 @@
     public class ServerErrorControllerBaseExtensionsTest
     {
         [Fact]
+        public void InternalServerErrorShouldReturnInternalServerErrorResult()
+        {
+            var controller = new HomeController();
+
+            var result = controller.TestInternalServerError();
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<InternalServerErrorResult>(result);
+        }
+
+        [Fact]
         public void NotImplementedShouldReturnNotImplementedResult()
         {
             var controller = new HomeController();
@@ -79,6 +90,11 @@
 
         private class HomeController : ControllerBase
         {
+            public IActionResult TestInternalServerError()
+            {
+                return this.InternalServerError();
+            }
+
             public IActionResult TestNotImplementedResult()
             {
                 return this.NotImplemented();
