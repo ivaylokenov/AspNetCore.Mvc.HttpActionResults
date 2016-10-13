@@ -35,6 +35,14 @@ namespace Microsoft.AspNetCore.Mvc
             => new PreconditionFailedResult();
 
         /// <summary>
+        /// Creates a <see cref="GoneResult"/> object that produces a Gone (410) response.
+        /// </summary>
+        /// <param name="controller">MVC controller instance.</param>
+        /// <returns>The created <see cref="GoneResult"/> for the response.</returns>
+        public static GoneResult Gone(this ControllerBase controller)
+            => new GoneResult();
+
+        /// <summary>
         /// Creates a <see cref="LengthRequiredResult"/> object that produces a Length Required (411) response.
         /// </summary>
         /// <param name="controller">MVC controller instance.</param>
