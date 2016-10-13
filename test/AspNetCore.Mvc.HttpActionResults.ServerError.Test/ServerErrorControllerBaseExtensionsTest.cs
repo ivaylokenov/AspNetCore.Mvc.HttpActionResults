@@ -1,6 +1,7 @@
 ﻿namespace AspNetCore.Mvc.HttpActionResults.ServerError.Test
 {
     using Microsoft.AspNetCore.Mvc;
+    using System;
     using Xunit;
 
     public class ServerErrorControllerBaseExtensionsTest
@@ -14,6 +15,17 @@
 
             Assert.NotNull(result);
             Assert.IsAssignableFrom<InternalServerErrorResult>(result);
+        }
+
+        [Fact]
+        public void InternalServerErrorShouldReturnExceptionResult()
+        {
+            var controller = new HomeController();
+
+            var result = controller.TestExceptionResult(new Exception());
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<ExceptionResult>(result);
         }
 
         [Fact]
@@ -54,6 +66,11 @@
             public IActionResult TestInternalServerError()
             {
                 return this.InternalServerError();
+            }
+
+            public IActionResult TestExceptionResult(Exception exception)
+            {
+                return this.InternalServerError(exception);
             }
 
             public IActionResult TestNotImplementedResult()

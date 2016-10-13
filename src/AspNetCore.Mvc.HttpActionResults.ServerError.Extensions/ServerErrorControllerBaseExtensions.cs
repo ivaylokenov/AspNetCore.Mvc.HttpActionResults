@@ -1,5 +1,7 @@
 ﻿namespace Microsoft.AspNetCore.Mvc
 {
+    using System;
+
     /// <summary>
     /// Class containing server error HTTP response extensions methods for <see cref="ControllerBase"/>. 
     /// </summary>
@@ -12,6 +14,22 @@
         /// <returns>The created <see cref="InternalServerErrorResult"/> for the response.</returns>
         public static InternalServerErrorResult InternalServerError(this ControllerBase controller)
             => new InternalServerErrorResult();
+
+        /// <summary>
+        /// Creates an <see cref="ExceptionResult"/> object that produces an Internal Server Error (500) response.
+        /// </summary>
+        /// <param name="controller">MVC controller instance.</param>
+        /// <param name="exception">The exception to include in the error.</param>
+        /// <returns>The created <see cref="InternalServerErrorResult"/> for the response.</returns>
+        public static ExceptionResult InternalServerError(this ControllerBase controller, Exception exception)
+        {
+            if (exception == null)
+            {
+                throw new ArgumentNullException(nameof(exception));
+            }
+
+            return new ExceptionResult(exception);
+        }
 
         /// <summary>
         /// Creates an <see cref="NotImplementedResult"/> object that produces a Not Implemented (501) response.
