@@ -28,7 +28,7 @@
         }
 
         [Fact]
-        public void NotAcceptableShouldNotAcceptableResult()
+        public void NotAcceptableShouldReturnNotAcceptableResult()
         {
             var controller = new HomeController();
 
