@@ -9,6 +9,14 @@ namespace Microsoft.AspNetCore.Mvc
     public static class ClientErrorControllerBaseExtensions
     {
         /// <summary>
+        /// Creates a <see cref="PaymentRequiredResult"/> object that produces a Payment Required (402) response.
+        /// </summary>
+        /// <param name="controller">MVC controller instance.</param>
+        /// <returns>The created <see cref="PaymentRequiredResult"/> for the response.</returns>
+        public static PaymentRequiredResult PaymentRequired(this ControllerBase controller)
+            => new PaymentRequiredResult();
+
+        /// <summary>
         /// Creates a <see cref="MethodNotAllowedResult"/> object that produces a Method Not Allowed (405) response.
         /// </summary>
         /// <param name="controller">MVC controller instance.</param>
