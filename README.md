@@ -81,6 +81,9 @@ ServiceUnavailableResult
 
 // 504 Gateway Timeout
 GatewayTimeoutResult
+
+// 505 HTTP Version Not Supported
+HTTPVersionNotSupportedResult
 ```
 
 ### Available ControllerBase extension methods:
@@ -151,6 +154,9 @@ controller.ServiceUnavailable();
 
 // returns 504 Gateway Timeout
 controller.GatewayTimeout();
+
+// returns 505 HTTP Version Not Supported
+controller.HTTPVersionNotSupported();
 ```
 
 ## License
