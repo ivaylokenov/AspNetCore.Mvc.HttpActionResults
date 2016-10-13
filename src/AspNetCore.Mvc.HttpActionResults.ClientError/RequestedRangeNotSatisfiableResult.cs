@@ -1,9 +1,10 @@
 ﻿namespace Microsoft.AspNetCore.Mvc
 {
-    using Http;
-    using Net.Http.Headers;
     using System;
     using System.Threading.Tasks;
+    using Extensions.Primitives;
+    using Http;
+    using Net.Http.Headers;
 
     /// <summary>
     /// A <see cref="StatusCodeResult"/> that when executed will produce an empty
@@ -23,15 +24,16 @@
         /// Initializes a new instance of the <see cref="RequestedRangeNotSatisfiableResult"/> class.
         /// </summary>
         /// <param name="selectedResourceLength"></param>
-        public RequestedRangeNotSatisfiableResult(long selectedResourceLength)
+        public RequestedRangeNotSatisfiableResult(long? selectedResourceLength)
             : this()
         {
+            this.SelectedResourceLength = selectedResourceLength;
         }
 
         /// <summary>
         /// Gets or sets the current length of the selected resource.
         /// </summary>
-        public long SelectedResourceLength { get; set; }
+        public long? SelectedResourceLength { get; set; }
 
         /// <inheritdoc />
         public override Task ExecuteResultAsync(ActionContext context)
@@ -41,9 +43,9 @@
                 throw new ArgumentNullException(nameof(context));
             }
 
-            if (this.SelectedResourceLength > 0)
+            if (SelectedResourceLength.HasValue)
             {
-                context.HttpContext.Response.Headers.Add(HeaderNames.ContentRange, new Extensions.Primitives.StringValues(this.SelectedResourceLength.ToString()));
+                context.HttpContext.Response.Headers.Add(HeaderNames.ContentRange, new StringValues(this.SelectedResourceLength.ToString()));
             }
 
             return base.ExecuteResultAsync(context);

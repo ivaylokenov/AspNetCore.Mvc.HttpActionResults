@@ -105,7 +105,7 @@ namespace Microsoft.AspNetCore.Mvc
         /// <param name="controller">MVC controller instance.</param>
         /// <param name="selectedResourceLength"> The current length of the selected resource</param>
         /// <returns>The created <see cref="RequestedRangeNotSatisfiableResult"/> for the response.</returns>
-        public static RequestedRangeNotSatisfiableResult RequestedRangeNotSatisfiable(this ControllerBase controller, long selectedResourceLength)
+        public static RequestedRangeNotSatisfiableResult RequestedRangeNotSatisfiable(this ControllerBase controller, long? selectedResourceLength)
             => new RequestedRangeNotSatisfiableResult(selectedResourceLength);
 
         /// <summary>
