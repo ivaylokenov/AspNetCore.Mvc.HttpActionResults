@@ -51,6 +51,9 @@ SeeOtherObjectResult
 // 304 Not Modified
 NotModifiedResult
 
+// 402 Payment Required
+PaymentRequiredResult
+
 // 405 Method Not Allowed
 MethodNotAllowedResult
 
@@ -115,6 +118,9 @@ controller.SeeOther(someUri, someObject);
 
 // returns 304 Not Modified
 controller.NotModified();
+
+// returns 402 Payment Required
+controller.PaymentRequired();
 
 // returns 405 Method Not Allowed
 controller.MethodNotAllowed();

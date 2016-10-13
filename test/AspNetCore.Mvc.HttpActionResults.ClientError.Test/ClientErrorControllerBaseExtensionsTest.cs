@@ -6,6 +6,17 @@
     public class ClientErrorControllerBaseExtensionsTest
     {
         [Fact]
+        public void PaymentRequiredShouldReturnPaymentRequiredResult()
+        {
+            var controller = new HomeController();
+
+            var result = controller.TestPaymentRequiredResult();
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<PaymentRequiredResult>(result);
+        }
+
+        [Fact]
         public void GoneShouldReturnGoneResult()
         {
             var controller = new HomeController();
@@ -51,6 +62,11 @@
 
         private class HomeController : ControllerBase
         {
+            public IActionResult TestPaymentRequiredResult()
+            {
+                return this.PaymentRequired();
+            }
+
             public IActionResult TestGoneResult()
             {
                 return this.Gone();
