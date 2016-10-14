@@ -29,12 +29,12 @@ namespace AspNetCore.Mvc.HttpActionResults.ServerError.Test
         }
 
         [Fact]
-		public void InternalServerErrorShouldThrowArgumentNullException()
-		{
-			var controller = new HomeController();
-
-			Assert.Throws<ArgumentNullException>(() => controller.TestExceptionResult(null));
-		}
+	public void InternalServerErrorShouldThrowArgumentNullException()
+	{
+	    var controller = new HomeController();
+		
+	    Assert.Throws<ArgumentNullException>(() => controller.TestExceptionResult(null));
+	}
         
         [Fact]
         public void NotImplementedShouldReturnNotImplementedResult()
