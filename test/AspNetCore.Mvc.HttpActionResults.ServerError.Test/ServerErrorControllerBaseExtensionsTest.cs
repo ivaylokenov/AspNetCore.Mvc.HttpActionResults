@@ -1,4 +1,4 @@
-﻿namespace AspNetCore.Mvc.HttpActionResults.ServerError.Test
+namespace AspNetCore.Mvc.HttpActionResults.ServerError.Test
 {
     using Microsoft.AspNetCore.Mvc;
     using System;
@@ -28,6 +28,14 @@
             Assert.IsAssignableFrom<ExceptionResult>(result);
         }
 
+        [Fact]
+		public void InternalServerErrorShouldThrowArgumentNullException()
+		{
+			var controller = new HomeController();
+
+			Assert.Throws<ArgumentNullException>(() => controller.TestExceptionResult(null));
+		}
+        
         [Fact]
         public void NotImplementedShouldReturnNotImplementedResult()
         {
