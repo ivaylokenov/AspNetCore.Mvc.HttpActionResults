@@ -1,6 +1,25 @@
 ﻿namespace AspNetCore.Mvc.HttpActionResults.ClientError.Test
 {
+    using System;
+    using System.Buffers;
+    using System.IO;
+    using System.Linq;
+
+    using Common;
+    using Common.Logging;
+
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Abstractions;
+    using Microsoft.AspNetCore.Mvc.Formatters;
+    using Microsoft.AspNetCore.Mvc.Internal;
+    using Microsoft.AspNetCore.Routing;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Logging;
+    using Microsoft.Extensions.Options;
+    using Microsoft.Net.Http.Headers;
+
+    using Newtonsoft.Json;
     using Xunit;
 
     public class ClientErrorControllerBaseExtensionsTest
@@ -14,6 +33,59 @@
 
             Assert.NotNull(result);
             Assert.IsAssignableFrom<PaymentRequiredResult>(result);
+        }
+
+        [Fact]
+        public void ProxyAuthenticationRequiredShouldReturnProxyAuthenticationRequiredResult()
+        {
+            var controller = new HomeController();
+            const string fakeHeaderValue = @"Basic realm=""proxy.com""";
+
+            var result = controller.TestProxyAuthenticationRequiredResult(fakeHeaderValue);
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<ProxyAuthenticationRequiredResult>(result);
+
+            var castResult = (ProxyAuthenticationRequiredResult)result;
+            Assert.Equal(fakeHeaderValue, castResult.ProxyAuthenticate);
+        }
+
+        [Fact]
+        public async void ProxyAuthenticationRequiredShouldSetStatusCodeCorrectly()
+        {
+            // Arrange
+            const string fakeHeaderValue = @"Basic realm=""proxy.com""";
+            var controller = new HomeController();
+
+            var fakeContext = this.CreateFakeActionContext();
+            var result = controller.TestProxyAuthenticationRequiredResult(fakeHeaderValue);
+
+            // Act
+            await result.ExecuteResultAsync(fakeContext);
+
+            // Assert
+            Assert.Equal(StatusCodes.Status407ProxyAuthenticationRequired, fakeContext.HttpContext.Response.StatusCode);
+        }
+
+        [Fact]
+        public async void ProxyAuthenticationRequiredShouldSetHeaderCorrectly()
+        {
+            // Arrange
+            const string fakeHeaderValue = @"Basic realm=""proxy.com""";
+            var controller = new HomeController();
+
+            var fakeContext = this.CreateFakeActionContext();
+            var result = controller.TestProxyAuthenticationRequiredResult(fakeHeaderValue);
+
+            // Act
+            await result.ExecuteResultAsync(fakeContext);
+
+            // Assert
+            var proxyAuthHeader =
+                fakeContext.HttpContext.Response.Headers.FirstOrDefault(x => x.Key == HeaderNames.ProxyAuthenticate);
+
+            Assert.NotNull(proxyAuthHeader);
+            Assert.Equal(fakeHeaderValue, proxyAuthHeader.Value);
         }
 
         [Fact]
@@ -190,6 +262,11 @@
                 return this.Conflict(data);
             }
 
+            public IActionResult TestProxyAuthenticationRequiredResult(string proxyAuthenticate)
+            {
+                return this.ProxyAuthenticationRequired(proxyAuthenticate);
+            }
+
             public IActionResult TestLengthRequiredResult()
             {
                 return this.LengthRequired();
@@ -224,6 +301,41 @@
             {
                 return this.ExpectationFailed();
             }
+        }
+
+        // TODO: Extract to a base class for all unit testing projects
+        private ActionContext CreateFakeActionContext()
+        {
+            var httpContext = new DefaultHttpContext
+            {
+                RequestServices = this.CreateServices()
+            };
+
+            var stream = new MemoryStream();
+            httpContext.Response.Body = stream;
+
+            var context = new ActionContext(httpContext, new RouteData(), new ActionDescriptor());
+
+            return context;
+        }
+
+        // TODO: Extract to a base class for all unit testing projects
+        private IServiceProvider CreateServices()
+        {
+            var options = new OptionsManager<MvcOptions>(new IConfigureOptions<MvcOptions>[] { });
+            options.Value.OutputFormatters.Add(new StringOutputFormatter());
+            options.Value.OutputFormatters.Add(new JsonOutputFormatter(
+                new JsonSerializerSettings(),
+                ArrayPool<char>.Shared));
+
+            var services = new ServiceCollection();
+            services.AddSingleton<ILoggerFactory>(FakeLoggerFactory.Instance);
+            services.AddSingleton(new ObjectResultExecutor(
+                options,
+                new TestHttpResponseStreamWriterFactory(),
+                FakeLoggerFactory.Instance));
+
+            return services.BuildServiceProvider();
         }
     }
 }
