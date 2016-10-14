@@ -100,11 +100,36 @@
         }
 
         [Fact]
+        public void ConflictShouldReturnConflictResult()
+        {
+            var controller = new HomeController();
+
+            var result = controller.TestConflictResult();
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<ConflictResult>(result);
+        }
+
+        [Fact]
+        public void ConflictShouldReturnConflictObjectResult()
+        {
+            var controller = new HomeController();
+            const string value = "I'm so fake";
+
+            var result = controller.TestConflictObjectResult(value);
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<ConflictObjectResult>(result);
+            var actionResult = (ConflictObjectResult)result;
+            Assert.Equal(actionResult.Value, value);
+        }
+
+        [Fact]
         public void NotAcceptableShouldReturnNotAcceptableResult()
         {
             var controller = new HomeController();
 
-            var result = controller.NotAcceptable();
+            var result = controller.TestNotAcceptableResult();
 
             Assert.NotNull(result);
             Assert.IsAssignableFrom<NotAcceptableResult>(result);
@@ -227,6 +252,16 @@
                 return this.NotAcceptable(data);
             }
 
+            public IActionResult TestConflictResult()
+            {
+                return this.Conflict();
+            }
+
+            public IActionResult TestConflictObjectResult(object data)
+            {
+                return this.Conflict(data);
+            }
+
             public IActionResult TestProxyAuthenticationRequiredResult(string proxyAuthenticate)
             {
                 return this.ProxyAuthenticationRequired(proxyAuthenticate);
@@ -294,11 +329,11 @@
                 ArrayPool<char>.Shared));
 
             var services = new ServiceCollection();
-            services.AddSingleton<ILoggerFactory>(TestLoggerFactory.Instance);
+            services.AddSingleton<ILoggerFactory>(FakeLoggerFactory.Instance);
             services.AddSingleton(new ObjectResultExecutor(
                 options,
                 new TestHttpResponseStreamWriterFactory(),
-                TestLoggerFactory.Instance));
+                FakeLoggerFactory.Instance));
 
             return services.BuildServiceProvider();
         }
