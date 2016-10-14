@@ -90,5 +90,30 @@ namespace Microsoft.AspNetCore.Mvc
         /// <returns>The created <see cref="ImATeapotResult"/> for the response.</returns>
         public static ImATeapotResult ImATeapot(this ControllerBase controller)
             => new ImATeapotResult();
+
+        /// <summary>
+        /// Creates an <see cref="RequestedRangeNotSatisfiableResult"/> object that produces an Requested Range Not Satisfiable (416) response.
+        /// </summary>
+        /// <param name="controller">MVC controller instance.</param>
+        /// <returns>The created <see cref="RequestedRangeNotSatisfiableResult"/> for the response.</returns>
+        public static RequestedRangeNotSatisfiableResult RequestedRangeNotSatisfiable(this ControllerBase controller)
+            => new RequestedRangeNotSatisfiableResult();
+
+        /// <summary>
+        /// Creates an <see cref="RequestedRangeNotSatisfiableResult"/> object that produces an Requested Range Not Satisfiable (416) response.
+        /// </summary>
+        /// <param name="controller">MVC controller instance.</param>
+        /// <param name="selectedResourceLength"> The current length of the selected resource</param>
+        /// <returns>The created <see cref="RequestedRangeNotSatisfiableResult"/> for the response.</returns>
+        public static RequestedRangeNotSatisfiableResult RequestedRangeNotSatisfiable(this ControllerBase controller, long? selectedResourceLength)
+            => new RequestedRangeNotSatisfiableResult(selectedResourceLength);
+
+        /// <summary>
+        /// Creates an <see cref="ExpectationFailedResult"/> object that produces an Expectation Failed (417) response.
+        /// </summary>
+        /// <param name="controller">MVC controller instance.</param>
+        /// <returns>The created <see cref="ExpectationFailedResult"/> for the response.</returns>
+        public static ExpectationFailedResult ExpectationFailed(this ControllerBase controller)
+            => new ExpectationFailedResult();
     }
 }
