@@ -17,8 +17,13 @@
         public ExceptionResult(Exception exception)
             : base(exception)
         {
-            this.StatusCode = StatusCodes.Status500InternalServerError;
-            this.Exception = exception;
+            if (exception == null)
+	        {
+		        throw new ArgumentNullException(nameof(exception));
+	        }
+
+			this.Exception = exception;
+			this.StatusCode = StatusCodes.Status500InternalServerError;
         }
 
         /// <summary>
@@ -27,14 +32,6 @@
         public Exception Exception
         {
             get; private set;
-        }
-
-        /// <inheritdoc />
-        public override Task ExecuteResultAsync(ActionContext context)
-        {
-            context.HttpContext.Response.StatusCode = StatusCodes.Status500InternalServerError;
-
-            return base.ExecuteResultAsync(context);
         }
     }
 }
