@@ -64,6 +64,9 @@ MethodNotAllowedResult
 NotAcceptableResult
 NotAcceptableObjectResult
 
+// 407 Proxy Authentication Required
+ProxyAuthenticationRequiredResult
+
 // 408 Request Timeout
 RequestTimeoutResult
 
@@ -152,6 +155,9 @@ controller.NotAcceptable();
 
 // returns 406 Not Acceptable with formatted value
 controller.NotAcceptable(someObject);
+
+// returns 407 Proxy Authentication Required witch Proxy-Authenticate header
+controller.ProxyAuthenticationRequired(proxyAuthenticate);
 
 // returns 408 Request Timeout
 controller.RequestTimeout();

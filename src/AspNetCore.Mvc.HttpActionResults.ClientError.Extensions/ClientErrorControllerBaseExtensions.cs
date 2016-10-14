@@ -55,6 +55,15 @@ namespace Microsoft.AspNetCore.Mvc
             => new NotAcceptableObjectResult(value);
 
         /// <summary>
+        /// Creates a <see cref="ProxyAuthenticationRequiredResult"/> object that produces a Proxy Authentication Required (407) response.
+        /// </summary>
+        /// <param name="controller">MVC controller instance.</param>
+        /// <param name="proxyAuthenticate">Challenge applicable to the proxy for the requested resource.</param>
+        /// <returns>The created <see cref="MethodNotAllowedResult"/> for the response.</returns>
+        public static ProxyAuthenticationRequiredResult ProxyAuthenticationRequired(this ControllerBase controller, string proxyAuthenticate)
+            => new ProxyAuthenticationRequiredResult(proxyAuthenticate);
+
+        /// <summary>
         /// Creates a <see cref="GoneResult"/> object that produces a Gone (410) response.
         /// </summary>
         /// <param name="controller">MVC controller instance.</param>
