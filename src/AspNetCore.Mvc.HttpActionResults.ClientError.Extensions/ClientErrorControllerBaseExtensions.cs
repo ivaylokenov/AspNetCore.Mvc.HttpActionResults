@@ -35,12 +35,24 @@ namespace Microsoft.AspNetCore.Mvc
            => new MethodNotAllowedResult(new StringValues(allowedMethods));
 
         /// <summary>
-        /// Creates a <see cref="PreconditionFailedResult"/> object that produces a Precondition Failed (412) response.
+        /// Creates a <see cref="NotAcceptableResult"/> object that produces a Not Acceptable (406) response.
         /// </summary>
         /// <param name="controller">MVC controller instance.</param>
-        /// <returns>The created <see cref="PreconditionFailedResult"/> for the response.</returns>
-        public static PreconditionFailedResult PreconditionFailed(this ControllerBase controller)
-            => new PreconditionFailedResult();
+        /// <returns>The created <see cref="NotAcceptableResult"/> for the response.</returns>
+        public static NotAcceptableResult NotAcceptable(this ControllerBase controller)
+            => new NotAcceptableResult();
+
+        /// <summary>
+        /// Creates a <see cref="NotAcceptableObjectResult"/> object that produces a Not Acceptable (406) response.
+        /// </summary>
+        /// <param name="controller">MVC controller instance.</param>
+        /// <param name="value">
+        /// An object containing information about available entity characteristics and location(s) 
+        /// from which the user can choose the one most appropriate.
+        /// </param>
+        /// <returns>The created <see cref="NotAcceptableObjectResult"/> for the response.</returns>
+        public static NotAcceptableObjectResult NotAcceptable(this ControllerBase controller, object value)
+            => new NotAcceptableObjectResult(value);
 
         /// <summary>
         /// Creates a <see cref="GoneResult"/> object that produces a Gone (410) response.
@@ -59,11 +71,19 @@ namespace Microsoft.AspNetCore.Mvc
             => new LengthRequiredResult();
 
         /// <summary>
+        /// Creates a <see cref="PreconditionFailedResult"/> object that produces a Precondition Failed (412) response.
+        /// </summary>
+        /// <param name="controller">MVC controller instance.</param>
+        /// <returns>The created <see cref="PreconditionFailedResult"/> for the response.</returns>
+        public static PreconditionFailedResult PreconditionFailed(this ControllerBase controller)
+            => new PreconditionFailedResult();
+
+        /// <summary>
         /// Creates a <see cref="PreconditionFailedObjectResult"/> object that produces a Precondition Failed (412) response.
         /// </summary>
         /// <param name="controller">MVC controller instance.</param>
         /// <param name="value">The precondition failed value to format in the entity body.</param>
-        /// <returns></returns>
+        /// <returns>The created <see cref="PreconditionFailedObjectResult"/> for the response.</returns>
         public static PreconditionFailedObjectResult PreconditionFailed(this ControllerBase controller, object value)
             => new PreconditionFailedObjectResult(value);
 

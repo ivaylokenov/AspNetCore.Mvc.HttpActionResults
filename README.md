@@ -60,6 +60,10 @@ PaymentRequiredResult
 // 405 Method Not Allowed
 MethodNotAllowedResult
 
+// 406 Not Acceptable
+NotAcceptableResult
+NotAcceptableObjectResult
+
 // 408 Request Timeout
 RequestTimeoutResult
 
@@ -142,6 +146,12 @@ controller.PaymentRequired();
 
 // returns 405 Method Not Allowed
 controller.MethodNotAllowed();
+
+// returns 406 Not Acceptable
+controller.NotAcceptable();
+
+// returns 406 Not Acceptable with formatted value
+controller.NotAcceptable(someObject);
 
 // returns 408 Request Timeout
 controller.RequestTimeout();
