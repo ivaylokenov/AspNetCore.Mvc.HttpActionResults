@@ -20,7 +20,7 @@
         /// </summary>
         /// <param name="controller">MVC controller instance.</param>
         /// <param name="exception">The exception to include in the error.</param>
-        /// <returns>The created <see cref="InternalServerErrorResult"/> for the response.</returns>
+        /// <returns>The created <see cref="ExceptionResult"/> for the response.</returns>
         public static ExceptionResult InternalServerError(this ControllerBase controller, Exception exception)
         {
             if (exception == null)
