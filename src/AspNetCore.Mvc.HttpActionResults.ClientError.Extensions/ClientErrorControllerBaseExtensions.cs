@@ -1,8 +1,7 @@
-﻿using Microsoft.Extensions.Primitives;
-using Microsoft.Net.Http.Headers;
-
-namespace Microsoft.AspNetCore.Mvc
+﻿namespace Microsoft.AspNetCore.Mvc
 {
+    using Extensions.Primitives;
+
     /// <summary>
     /// Class containing client error HTTP response extensions methods for <see cref="ControllerBase"/>. 
     /// </summary>
@@ -53,6 +52,15 @@ namespace Microsoft.AspNetCore.Mvc
         /// <returns>The created <see cref="NotAcceptableObjectResult"/> for the response.</returns>
         public static NotAcceptableObjectResult NotAcceptable(this ControllerBase controller, object value)
             => new NotAcceptableObjectResult(value);
+
+        /// <summary>
+        /// Creates a <see cref="ProxyAuthenticationRequiredResult"/> object that produces a Proxy Authentication Required (407) response.
+        /// </summary>
+        /// <param name="controller">MVC controller instance.</param>
+        /// <param name="proxyAuthenticate">Challenge applicable to the proxy for the requested resource.</param>
+        /// <returns>The created <see cref="MethodNotAllowedResult"/> for the response.</returns>
+        public static ProxyAuthenticationRequiredResult ProxyAuthenticationRequired(this ControllerBase controller, string proxyAuthenticate)
+            => new ProxyAuthenticationRequiredResult(proxyAuthenticate);
 
         /// <summary>
         /// Creates a <see cref="GoneResult"/> object that produces a Gone (410) response.
