@@ -1,8 +1,7 @@
-﻿using Microsoft.Extensions.Primitives;
-using Microsoft.Net.Http.Headers;
-
-namespace Microsoft.AspNetCore.Mvc
+﻿namespace Microsoft.AspNetCore.Mvc
 {
+    using Extensions.Primitives;
+
     /// <summary>
     /// Class containing client error HTTP response extensions methods for <see cref="ControllerBase"/>. 
     /// </summary>
