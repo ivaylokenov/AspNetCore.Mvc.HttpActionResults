@@ -1,8 +1,7 @@
-﻿using Microsoft.Extensions.Primitives;
-using Microsoft.Net.Http.Headers;
-
-namespace Microsoft.AspNetCore.Mvc
+﻿namespace Microsoft.AspNetCore.Mvc
 {
+    using Extensions.Primitives;
+
     /// <summary>
     /// Class containing client error HTTP response extensions methods for <see cref="ControllerBase"/>. 
     /// </summary>
@@ -55,9 +54,21 @@ namespace Microsoft.AspNetCore.Mvc
         /// Creates a <see cref="PreconditionFailedResult"/> object that produces a Precondition Failed (412) response.
         /// </summary>
         /// <param name="controller">MVC controller instance.</param>
-        /// <returns>The created <see cref="PreconditionFailedResult"/> for the response.</returns>
-        public static PreconditionFailedResult PreconditionFailed(this ControllerBase controller)
-            => new PreconditionFailedResult();
+        /// <returns>The created <see cref="NotAcceptableResult"/> for the response.</returns>
+        public static NotAcceptableResult NotAcceptable(this ControllerBase controller)
+            => new NotAcceptableResult();
+
+        /// <summary>
+        /// Creates a <see cref="NotAcceptableObjectResult"/> object that produces a Not Acceptable (406) response.
+        /// </summary>
+        /// <param name="controller">MVC controller instance.</param>
+        /// <param name="value">
+        /// An object containing information about available entity characteristics and location(s) 
+        /// from which the user can choose the one most appropriate.
+        /// </param>
+        /// <returns>The created <see cref="NotAcceptableObjectResult"/> for the response.</returns>
+        public static NotAcceptableObjectResult NotAcceptable(this ControllerBase controller, object value)
+            => new NotAcceptableObjectResult(value);
 
         /// <summary>
         /// Creates a <see cref="GoneResult"/> object that produces a Gone (410) response.
@@ -76,11 +87,19 @@ namespace Microsoft.AspNetCore.Mvc
             => new LengthRequiredResult();
 
         /// <summary>
+        /// Creates a <see cref="PreconditionFailedResult"/> object that produces a Precondition Failed (412) response.
+        /// </summary>
+        /// <param name="controller">MVC controller instance.</param>
+        /// <returns>The created <see cref="PreconditionFailedResult"/> for the response.</returns>
+        public static PreconditionFailedResult PreconditionFailed(this ControllerBase controller)
+            => new PreconditionFailedResult();
+
+        /// <summary>
         /// Creates a <see cref="PreconditionFailedObjectResult"/> object that produces a Precondition Failed (412) response.
         /// </summary>
         /// <param name="controller">MVC controller instance.</param>
         /// <param name="value">The precondition failed value to format in the entity body.</param>
-        /// <returns></returns>
+        /// <returns>The created <see cref="PreconditionFailedObjectResult"/> for the response.</returns>
         public static PreconditionFailedObjectResult PreconditionFailed(this ControllerBase controller, object value)
             => new PreconditionFailedObjectResult(value);
 
@@ -107,5 +126,30 @@ namespace Microsoft.AspNetCore.Mvc
         /// <returns>The created <see cref="ImATeapotResult"/> for the response.</returns>
         public static ImATeapotResult ImATeapot(this ControllerBase controller)
             => new ImATeapotResult();
+
+        /// <summary>
+        /// Creates an <see cref="RequestedRangeNotSatisfiableResult"/> object that produces an Requested Range Not Satisfiable (416) response.
+        /// </summary>
+        /// <param name="controller">MVC controller instance.</param>
+        /// <returns>The created <see cref="RequestedRangeNotSatisfiableResult"/> for the response.</returns>
+        public static RequestedRangeNotSatisfiableResult RequestedRangeNotSatisfiable(this ControllerBase controller)
+            => new RequestedRangeNotSatisfiableResult();
+
+        /// <summary>
+        /// Creates an <see cref="RequestedRangeNotSatisfiableResult"/> object that produces an Requested Range Not Satisfiable (416) response.
+        /// </summary>
+        /// <param name="controller">MVC controller instance.</param>
+        /// <param name="selectedResourceLength"> The current length of the selected resource</param>
+        /// <returns>The created <see cref="RequestedRangeNotSatisfiableResult"/> for the response.</returns>
+        public static RequestedRangeNotSatisfiableResult RequestedRangeNotSatisfiable(this ControllerBase controller, long? selectedResourceLength)
+            => new RequestedRangeNotSatisfiableResult(selectedResourceLength);
+
+        /// <summary>
+        /// Creates an <see cref="ExpectationFailedResult"/> object that produces an Expectation Failed (417) response.
+        /// </summary>
+        /// <param name="controller">MVC controller instance.</param>
+        /// <returns>The created <see cref="ExpectationFailedResult"/> for the response.</returns>
+        public static ExpectationFailedResult ExpectationFailed(this ControllerBase controller)
+            => new ExpectationFailedResult();
     }
 }

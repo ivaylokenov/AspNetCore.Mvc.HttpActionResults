@@ -44,6 +44,9 @@ SwitchingProtocolsResult
 AcceptedResult
 AcceptedObjectResult
 
+// 205 Reset Content
+ResetContentResult
+
 // 303 See Other
 SeeOtherResult
 SeeOtherObjectResult
@@ -56,6 +59,10 @@ PaymentRequiredResult
 
 // 405 Method Not Allowed
 MethodNotAllowedResult
+
+// 406 Not Acceptable
+NotAcceptableResult
+NotAcceptableObjectResult
 
 // 408 Request Timeout
 RequestTimeoutResult
@@ -120,6 +127,9 @@ controller.Accepted(someObject);
 // returns 202 Accepted with Location header and formatted value
 controller.Accepted(someUri, someObject);
 
+// returns 205 Reset Content
+controller.ResetContent();
+
 // returns 303 See Other
 controller.SeeOther();
 
@@ -140,6 +150,12 @@ controller.PaymentRequired();
 
 // returns 405 Method Not Allowed
 controller.MethodNotAllowed();
+
+// returns 406 Not Acceptable
+controller.NotAcceptable();
+
+// returns 406 Not Acceptable with formatted value
+controller.NotAcceptable(someObject);
 
 // returns 408 Request Timeout
 controller.RequestTimeout();

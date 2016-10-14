@@ -53,6 +53,31 @@
         }
 
         [Fact]
+        public void NotAcceptableShouldReturnNotAcceptableResult()
+        {
+            var controller = new HomeController();
+
+            var result = controller.TestNotAcceptableResult();
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<NotAcceptableResult>(result);
+        }
+
+        [Fact]
+        public void NotAcceptableShouldReturnNotAcceptableObjectResult()
+        {
+            var controller = new HomeController();
+            const string value = "I'm so fake";
+
+            var result = controller.TestNotAcceptableObjectResult(value);
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<NotAcceptableObjectResult>(result);
+            var actionResult = (NotAcceptableObjectResult)result;
+            Assert.Equal(actionResult.Value, value);
+        }
+
+        [Fact]
         public void LengthRequiredShouldReturnLengthRequiredResult()
         {
             var controller = new HomeController();
@@ -96,6 +121,43 @@
             Assert.IsAssignableFrom<ImATeapotResult>(result);
         }
 
+        [Fact]
+        public void RequestedRangeNotSatisfiableShouldReturnRequestedRangeNotSatisfiableResult()
+        {
+            var controller = new HomeController();
+
+            var result = controller.TestRequestedRangeNotSatisfiableResult();
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<RequestedRangeNotSatisfiableResult>(result);
+        }
+
+        [Fact]
+        public void RequestedRangeNotSatisfiableShouldReturnRequestedRangeNotSatisfiableResultWithLengthOfSelectedResource()
+        {
+            var controller = new HomeController();
+
+            long? selectedResourceLength = 1L;
+
+            var result = controller.TestRequestedRangeNotSatisfiableResultWithPassedSelectedResourceLength(selectedResourceLength);
+            var actionResult = (RequestedRangeNotSatisfiableResult)result;
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<RequestedRangeNotSatisfiableResult>(result);
+            Assert.Equal(actionResult.SelectedResourceLength, selectedResourceLength);
+        }
+
+        [Fact]
+        public void ExpectationFailedShouldReturnExpectationFailedResult()
+        {
+            var controller = new HomeController();
+
+            var result = controller.TestExpectationFailedResult();
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<ExpectationFailedResult>(result);
+        }
+
         private class HomeController : ControllerBase
         {
             public IActionResult TestPaymentRequiredResult()
@@ -106,6 +168,16 @@
             public IActionResult TestGoneResult()
             {
                 return this.Gone();
+            }
+
+            public IActionResult TestNotAcceptableResult()
+            {
+                return this.NotAcceptable();
+            }
+
+            public IActionResult TestNotAcceptableObjectResult(object data)
+            {
+                return this.NotAcceptable(data);
             }
 
             public IActionResult TestConflictResult()
@@ -136,6 +208,21 @@
             public IActionResult TestImATeapotResult()
             {
                 return this.ImATeapot();
+            }
+
+            public IActionResult TestRequestedRangeNotSatisfiableResult()
+            {
+                return this.RequestedRangeNotSatisfiable();
+            }
+
+            public IActionResult TestRequestedRangeNotSatisfiableResultWithPassedSelectedResourceLength(long? selectedResourceLength)
+            {
+                return this.RequestedRangeNotSatisfiable(selectedResourceLength);
+            }
+
+            public IActionResult TestExpectationFailedResult()
+            {
+                return this.ExpectationFailed();
             }
         }
     }
