@@ -1,8 +1,8 @@
 ﻿namespace Microsoft.AspNetCore.Mvc
 {
-    using Http;
     using System;
-    using System.Threading.Tasks;
+
+    using Http;
 
     /// <summary>
     /// A <see cref="StatusCodeResult"/> that when executed will produce a
