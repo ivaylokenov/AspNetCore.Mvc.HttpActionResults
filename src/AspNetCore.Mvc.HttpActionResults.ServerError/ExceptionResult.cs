@@ -18,22 +18,24 @@
         /// <see langword="true"/> if the error should include exception messages; otherwise, <see langword="false"/>.
         /// </param>
         public ExceptionResult(Exception exception, bool includeErrorDetail)
-            :base(exception)
+            : base(exception)
         {
             if (exception == null)
-	        {
-		        throw new ArgumentNullException(nameof(exception));
-	        }
-
-            if(includeErrorDetail)
+            {
+                throw new ArgumentNullException(nameof(exception));
+            }
+            
+            if (includeErrorDetail)
             {
                 this.Value = exception;
-            } else {
+            }
+            else
+            {
                 this.Value = exception.Message;
             }
 
-			this.Exception = exception;
-			this.StatusCode = StatusCodes.Status500InternalServerError;
+            this.Exception = exception;
+            this.StatusCode = StatusCodes.Status500InternalServerError;
         }
 
         /// <summary>
@@ -41,9 +43,9 @@
         /// </summary>
         /// <param name="exception">The exception to include in the error.</param>
         public ExceptionResult(Exception exception)
-            :this(exception, false)
+            : this(exception, false)
         {
-        }     
+        }
 
         /// <summary>
         /// Gets the exception to include in the error.
