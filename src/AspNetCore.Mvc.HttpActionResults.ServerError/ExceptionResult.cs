@@ -27,9 +27,30 @@
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="ExceptionResult"/> class.
+        /// </summary>
+        /// <param name="exception">The exception to include in the error.</param>
+        /// <param name="includeErrorDetail">
+        /// <see langword="true"/> if the error should include exception messages; otherwise, <see langword="false"/>.
+        /// </param>
+        public ExceptionResult(Exception exception, bool includeErrorDetail)
+            :this(exception)
+        {
+            this.IncludeErrorDetail = includeErrorDetail;
+        }
+
+        /// <summary>
         /// Gets the exception to include in the error.
         /// </summary>
         public Exception Exception
+        {
+            get; private set;
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether the error should include exception messages.
+        /// </summary>
+        public bool IncludeErrorDetail
         {
             get; private set;
         }
