@@ -40,5 +40,13 @@
         /// <returns>The created <see cref="AcceptedObjectResult"/> for the response.</returns>
         public static AcceptedObjectResult Accepted(this ControllerBase controller, string uri, object value)
             => new AcceptedObjectResult(uri, value);
+
+        /// <summary>
+        /// Creates an <see cref="ResetContentResult"/> object that produces an Accepted (205) response.
+        /// </summary>
+        /// <param name="controller">MVC controller instance.</param>
+        /// <returns>The created <see cref="ResetContentResult"/> for the response.</returns>
+        public static ResetContentResult ResetContent(this ControllerBase controller)
+            => new ResetContentResult();
     }
 }

@@ -44,6 +44,9 @@ SwitchingProtocolsResult
 AcceptedResult
 AcceptedObjectResult
 
+// 205 Reset Content
+ResetContentResult
+
 // 303 See Other
 SeeOtherResult
 SeeOtherObjectResult
@@ -51,11 +54,28 @@ SeeOtherObjectResult
 // 304 Not Modified
 NotModifiedResult
 
+// 402 Payment Required
+PaymentRequiredResult
+
 // 405 Method Not Allowed
 MethodNotAllowedResult
 
+// 406 Not Acceptable
+NotAcceptableResult
+NotAcceptableObjectResult
+
+// 407 Proxy Authentication Required
+ProxyAuthenticationRequiredResult
+
 // 408 Request Timeout
 RequestTimeoutResult
+
+// 409 Conflict
+ConflictResult
+ConflictObjectResult
+
+// 410 Gone
+GoneResult
 
 // 411 Length Required
 LengthRequiredResult
@@ -63,6 +83,12 @@ LengthRequiredResult
 // 412 Precondition Failed
 PreconditionFailedResult
 PreconditionFailedObjectResult
+
+// 415 Unsupported Media Type
+UnsupportedMediaTypeResult
+
+// 418 Im A Teapot
+ImATeapotResult
 
 // 500 Internal Server Error
 InternalServerErrorResult
@@ -73,8 +99,14 @@ NotImplementedResult
 // 502 Bad Gateway
 BadGatewayResult
 
+// 503 Service Unavailable
+ServiceUnavailableResult
+
 // 504 Gateway Timeout
 GatewayTimeoutResult
+
+// 505 HTTP Version Not Supported
+HTTPVersionNotSupportedResult
 ```
 
 ### Available ControllerBase extension methods:
@@ -98,6 +130,9 @@ controller.Accepted(someObject);
 // returns 202 Accepted with Location header and formatted value
 controller.Accepted(someUri, someObject);
 
+// returns 205 Reset Content
+controller.ResetContent();
+
 // returns 303 See Other
 controller.SeeOther();
 
@@ -113,11 +148,32 @@ controller.SeeOther(someUri, someObject);
 // returns 304 Not Modified
 controller.NotModified();
 
+// returns 402 Payment Required
+controller.PaymentRequired();
+
 // returns 405 Method Not Allowed
 controller.MethodNotAllowed();
 
+// returns 406 Not Acceptable
+controller.NotAcceptable();
+
+// returns 406 Not Acceptable with formatted value
+controller.NotAcceptable(someObject);
+
+// returns 407 Proxy Authentication Required witch Proxy-Authenticate header
+controller.ProxyAuthenticationRequired(proxyAuthenticate);
+
 // returns 408 Request Timeout
 controller.RequestTimeout();
+
+// returns 409 Conflict
+controller.Conflict();
+
+// returns 409 Conflict with formatted value
+controller.Conflict(someObject);
+
+// returns 410 Gone
+controller.Gone();
 
 // returns 411 Length Required
 controller.LengthRequired();
@@ -131,6 +187,9 @@ controller.PreconditionFailed(someObject);
 // returns 415 Unsupported Media Type
 controller.UnsupportedMediaType();
 
+// returns 418 Im A Teapot
+controller.ImATeapot();
+
 // returns 500 Internal Server Error
 controller.InternalServerError();
 
@@ -140,8 +199,14 @@ controller.NotImplemented();
 // returns 502 Bad Gateway
 controller.BadGateway();
 
+// returns 503 Service Unavailable
+controller.ServiceUnavailable();
+
 // returns 504 Gateway Timeout
 controller.GatewayTimeout();
+
+// returns 505 HTTP Version Not Supported
+controller.HTTPVersionNotSupported();
 ```
 
 ## License
