@@ -95,6 +95,7 @@ ImATeapotResult
 
 // 500 Internal Server Error
 InternalServerErrorResult
+ExceptionResult
 
 // 501 Not Implemented
 NotImplementedResult

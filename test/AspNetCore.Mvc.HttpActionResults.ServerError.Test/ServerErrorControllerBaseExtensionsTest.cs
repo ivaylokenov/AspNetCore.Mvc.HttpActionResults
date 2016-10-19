@@ -1,129 +1,178 @@
-﻿namespace AspNetCore.Mvc.HttpActionResults.ServerError.Test
+namespace AspNetCore.Mvc.HttpActionResults.ServerError.Test
 {
-    using Microsoft.AspNetCore.Mvc;
-    using Xunit;
+	using Microsoft.AspNetCore.Mvc;
+	using System;
+	using Xunit;
 
-    public class ServerErrorControllerBaseExtensionsTest
-    {
-        [Fact]
-        public void InternalServerErrorShouldReturnInternalServerErrorResult()
-        {
-            var controller = new HomeController();
+	public class ServerErrorControllerBaseExtensionsTest
+	{
+		[Fact]
+		public void InternalServerErrorShouldReturnInternalServerErrorResult()
+		{
+			var controller = new HomeController();
 
-            var result = controller.TestInternalServerError();
+			var result = controller.TestInternalServerError();
 
-            Assert.NotNull(result);
-            Assert.IsAssignableFrom<InternalServerErrorResult>(result);
-        }
+			Assert.NotNull(result);
+			Assert.IsAssignableFrom<InternalServerErrorResult>(result);
+		}
 
-        [Fact]
-        public void NotImplementedShouldReturnNotImplementedResult()
-        {
-            var controller = new HomeController();
+		[Fact]
+		public void InternalServerErrorShouldReturnExceptionResult()
+		{
+			var controller = new HomeController();
 
-            var result = controller.TestNotImplementedResult();
+			var result = controller.TestExceptionResult(new Exception());
 
-            Assert.NotNull(result);
-            Assert.IsAssignableFrom<NotImplementedResult>(result);
-        }
+			Assert.NotNull(result);
+			Assert.IsAssignableFrom<ExceptionResult>(result);
+		}
 
-        [Fact]
-        public void BadGatewayShouldReturnBadGatewayResult()
-        {
-            var controller = new HomeController();
+		[Fact]
+		public void InternalServerErrorShouldReturnExceptionResultWithErrors()
+		{
+			var controller = new HomeController();
 
-            var result = controller.TestBadGatewayResult();
+			var result = controller.TestExceptionResult(new Exception(), true);
 
-            Assert.NotNull(result);
-            Assert.IsAssignableFrom<BadGatewayResult>(result);
-        }
+			Assert.NotNull(result);
+			Assert.IsAssignableFrom<ExceptionResult>(result);
+		}
 
-        [Fact]
-        public void ServiceUnavailableShouldReturnServiceUnavailableResult()
-        {
-            var controller = new HomeController();
+		[Fact]
+		public void InternalServerErrorNullShouldThrowArgumentNullException()
+		{
+			var controller = new HomeController();
 
-            var result = controller.TestServiceUnavailableResult();
+			Assert.Throws<ArgumentNullException>(() => controller.TestExceptionResult(null));
+		}
 
-            Assert.NotNull(result);
-            Assert.IsAssignableFrom<ServiceUnavailableResult>(result);
-        }
+		[Fact]
+		public void InternalServerErrorNullWithParameterShouldThrowArgumentNullException()
+		{
+			var controller = new HomeController();
 
-        [Fact]
-        public void ServiceUnavailableShouldReturnServiceUnavailableResultWithLengthOfDelay()
-        {
-            var controller = new HomeController();
+			Assert.Throws<ArgumentNullException>(() => controller.TestExceptionResult(null, true));
+		}
 
-            var lengthOfDelay = "10";
-            var result = controller.TestServiceUnavailableResultWithLengthOfDelay(lengthOfDelay);
+		[Fact]
+		public void NotImplementedShouldReturnNotImplementedResult()
+		{
+			var controller = new HomeController();
 
-            Assert.NotNull(result);
-            Assert.IsAssignableFrom<ServiceUnavailableResult>(result);
-            var actionResult = (ServiceUnavailableResult)result;
-            Assert.Equal(actionResult.LengthOfDelay, lengthOfDelay);
-        }
+			var result = controller.TestNotImplementedResult();
 
-        [Fact]
-        public void GatewayTimeoutShouldReturnGatewayTimeoutResult()
-        {
-            var controller = new HomeController();
+			Assert.NotNull(result);
+			Assert.IsAssignableFrom<NotImplementedResult>(result);
+		}
 
-            var result = controller.TestGatewayTimeoutResult();
+		[Fact]
+		public void BadGatewayShouldReturnBadGatewayResult()
+		{
+			var controller = new HomeController();
 
-            Assert.NotNull(result);
-            Assert.IsAssignableFrom<GatewayTimeoutResult>(result);
-        }
+			var result = controller.TestBadGatewayResult();
 
-        [Fact]
-        public void HTTPVersionNotSupportedShouldReturnHTTPVersionNotSupportedResult()
-        {
-            var controller = new HomeController();
-            var value = new object { };
+			Assert.NotNull(result);
+			Assert.IsAssignableFrom<BadGatewayResult>(result);
+		}
 
-            var result = controller.TestHTTPVersionNotSupportedResult(value);
+		[Fact]
+		public void ServiceUnavailableShouldReturnServiceUnavailableResult()
+		{
+			var controller = new HomeController();
 
-            Assert.NotNull(result);
-            Assert.IsAssignableFrom<HTTPVersionNotSupportedResult>(result);
-            var actionResult = (HTTPVersionNotSupportedResult)result;
-            Assert.Equal(actionResult.Value, value);
-        }
+			var result = controller.TestServiceUnavailableResult();
 
-        private class HomeController : ControllerBase
-        {
-            public IActionResult TestInternalServerError()
-            {
-                return this.InternalServerError();
-            }
+			Assert.NotNull(result);
+			Assert.IsAssignableFrom<ServiceUnavailableResult>(result);
+		}
 
-            public IActionResult TestNotImplementedResult()
-            {
-                return this.NotImplemented();
-            }
+		[Fact]
+		public void ServiceUnavailableShouldReturnServiceUnavailableResultWithLengthOfDelay()
+		{
+			var controller = new HomeController();
 
-            public IActionResult TestBadGatewayResult()
-            {
-                return this.BadGateway();
-            }
+			var lengthOfDelay = "10";
+			var result = controller.TestServiceUnavailableResultWithLengthOfDelay(lengthOfDelay);
 
-            public IActionResult TestServiceUnavailableResult()
-            {
-                return this.ServiceUnavailable();
-            }
+			Assert.NotNull(result);
+			Assert.IsAssignableFrom<ServiceUnavailableResult>(result);
+			var actionResult = (ServiceUnavailableResult)result;
+			Assert.Equal(actionResult.LengthOfDelay, lengthOfDelay);
+		}
 
-            public IActionResult TestServiceUnavailableResultWithLengthOfDelay(string lengthOfDelay)
-            {
-                return this.ServiceUnavailable(lengthOfDelay);
-            }
+		[Fact]
+		public void GatewayTimeoutShouldReturnGatewayTimeoutResult()
+		{
+			var controller = new HomeController();
 
-            public IActionResult TestGatewayTimeoutResult()
-            {
-                return this.GatewayTimeout();
-            }
+			var result = controller.TestGatewayTimeoutResult();
 
-            public IActionResult TestHTTPVersionNotSupportedResult(object value)
-            {
-                return this.HTTPVersionNotSupported(value);
-            }
-        }
-    }
+			Assert.NotNull(result);
+			Assert.IsAssignableFrom<GatewayTimeoutResult>(result);
+		}
+
+		[Fact]
+		public void HTTPVersionNotSupportedShouldReturnHTTPVersionNotSupportedResult()
+		{
+			var controller = new HomeController();
+			var value = new object { };
+
+			var result = controller.TestHTTPVersionNotSupportedResult(value);
+
+			Assert.NotNull(result);
+			Assert.IsAssignableFrom<HTTPVersionNotSupportedResult>(result);
+			var actionResult = (HTTPVersionNotSupportedResult)result;
+			Assert.Equal(actionResult.Value, value);
+		}
+
+		private class HomeController : ControllerBase
+		{
+			public IActionResult TestExceptionResult(Exception exception, bool includeErrorDetail)
+			{
+				return this.InternalServerError(exception, includeErrorDetail);
+			}
+
+			public IActionResult TestExceptionResult(Exception exception)
+			{
+				return this.InternalServerError(exception);
+			}
+
+			public IActionResult TestInternalServerError()
+			{
+				return this.InternalServerError();
+			}
+
+			public IActionResult TestNotImplementedResult()
+			{
+				return this.NotImplemented();
+			}
+
+			public IActionResult TestBadGatewayResult()
+			{
+				return this.BadGateway();
+			}
+
+			public IActionResult TestServiceUnavailableResult()
+			{
+				return this.ServiceUnavailable();
+			}
+
+			public IActionResult TestServiceUnavailableResultWithLengthOfDelay(string lengthOfDelay)
+			{
+				return this.ServiceUnavailable(lengthOfDelay);
+			}
+
+			public IActionResult TestGatewayTimeoutResult()
+			{
+				return this.GatewayTimeout();
+			}
+
+			public IActionResult TestHTTPVersionNotSupportedResult(object value)
+			{
+				return this.HTTPVersionNotSupported(value);
+			}
+		}
+	}
 }
