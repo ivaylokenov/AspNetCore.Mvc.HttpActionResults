@@ -57,7 +57,10 @@
         /// <inheritdoc />
         public override Task ExecuteResultAsync(ActionContext context)
         {
-            context.HttpContext.Response.Headers.Add(HeaderNames.RetryAfter, new StringValues(this.RetryAfter));
+            if (!string.IsNullOrWhiteSpace(this.RetryAfter))
+            {
+                context.HttpContext.Response.Headers.Add(HeaderNames.RetryAfter, new StringValues(this.RetryAfter));
+            }
 
             return base.ExecuteResultAsync(context);
         }
