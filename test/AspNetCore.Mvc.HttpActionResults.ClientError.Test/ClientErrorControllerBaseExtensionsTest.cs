@@ -51,44 +51,6 @@
         }
 
         [Fact]
-        public async void ProxyAuthenticationRequiredShouldSetStatusCodeCorrectly()
-        {
-            // Arrange
-            const string fakeHeaderValue = @"Basic realm=""proxy.com""";
-            var controller = new HomeController();
-
-            var fakeContext = this.CreateFakeActionContext();
-            var result = controller.TestProxyAuthenticationRequiredResult(fakeHeaderValue);
-
-            // Act
-            await result.ExecuteResultAsync(fakeContext);
-
-            // Assert
-            Assert.Equal(StatusCodes.Status407ProxyAuthenticationRequired, fakeContext.HttpContext.Response.StatusCode);
-        }
-
-        [Fact]
-        public async void ProxyAuthenticationRequiredShouldSetHeaderCorrectly()
-        {
-            // Arrange
-            const string fakeHeaderValue = @"Basic realm=""proxy.com""";
-            var controller = new HomeController();
-
-            var fakeContext = this.CreateFakeActionContext();
-            var result = controller.TestProxyAuthenticationRequiredResult(fakeHeaderValue);
-
-            // Act
-            await result.ExecuteResultAsync(fakeContext);
-
-            // Assert
-            var proxyAuthHeader =
-                fakeContext.HttpContext.Response.Headers.FirstOrDefault(x => x.Key == HeaderNames.ProxyAuthenticate);
-
-            Assert.NotNull(proxyAuthHeader);
-            Assert.Equal(fakeHeaderValue, proxyAuthHeader.Value);
-        }
-
-        [Fact]
         public void GoneShouldReturnGoneResult()
         {
             var controller = new HomeController();
@@ -158,6 +120,45 @@
 
             Assert.NotNull(result);
             Assert.IsAssignableFrom<LengthRequiredResult>(result);
+        }
+
+        [Fact]
+        public void RequestEntityTooLargedShouldReturnRequestEntityTooLargeResult()
+        {
+            var controller = new HomeController();
+
+            var result = controller.TestRequestEntityTooLargeResult();
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<RequestEntityTooLargeResult>(result);
+        }
+
+        [Fact]
+        public void RequestEntityTooLargedWithRetryTimeShouldReturnRequestEntityTooLargeResult()
+        {
+            var controller = new HomeController();
+            var retryAfterTime = 120L;
+
+            var result = controller.TestRequestEntityTooLargeResult(retryAfterTime);
+            var actionResult = (RequestEntityTooLargeResult)result;
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<RequestEntityTooLargeResult>(result);
+            Assert.Equal(actionResult.RetryAfter, retryAfterTime.ToString());
+        }
+
+        [Fact]
+        public void RequestEntityTooLargedWithRetryDateShouldReturnRequestEntityTooLargeResult()
+        {
+            var controller = new HomeController();
+            var retryAfterDate = DateTime.Now;
+
+            var result = controller.TestRequestEntityTooLargeResult(retryAfterDate);
+            var actionResult = (RequestEntityTooLargeResult)result;
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<RequestEntityTooLargeResult>(result);
+            Assert.Equal(actionResult.RetryAfter, retryAfterDate.ToUniversalTime().ToString("r"));
         }
 
         [Fact]
@@ -272,6 +273,21 @@
                 return this.LengthRequired();
             }
 
+            public IActionResult TestRequestEntityTooLargeResult()
+            {
+                return this.RequestEntityTooLarge();
+            }
+
+            public IActionResult TestRequestEntityTooLargeResult(long retryAfter)
+            {
+                return this.RequestEntityTooLarge(retryAfter);
+            }
+
+            public IActionResult TestRequestEntityTooLargeResult(DateTime retryAfter)
+            {
+                return this.RequestEntityTooLarge(retryAfter);
+            }
+
             public IActionResult TestUnsupportedMediaTypeResult()
             {
                 return this.UnsupportedMediaType();
@@ -301,41 +317,6 @@
             {
                 return this.ExpectationFailed();
             }
-        }
-
-        // TODO: Extract to a base class for all unit testing projects
-        private ActionContext CreateFakeActionContext()
-        {
-            var httpContext = new DefaultHttpContext
-            {
-                RequestServices = this.CreateServices()
-            };
-
-            var stream = new MemoryStream();
-            httpContext.Response.Body = stream;
-
-            var context = new ActionContext(httpContext, new RouteData(), new ActionDescriptor());
-
-            return context;
-        }
-
-        // TODO: Extract to a base class for all unit testing projects
-        private IServiceProvider CreateServices()
-        {
-            var options = new OptionsManager<MvcOptions>(new IConfigureOptions<MvcOptions>[] { });
-            options.Value.OutputFormatters.Add(new StringOutputFormatter());
-            options.Value.OutputFormatters.Add(new JsonOutputFormatter(
-                new JsonSerializerSettings(),
-                ArrayPool<char>.Shared));
-
-            var services = new ServiceCollection();
-            services.AddSingleton<ILoggerFactory>(FakeLoggerFactory.Instance);
-            services.AddSingleton(new ObjectResultExecutor(
-                options,
-                new TestHttpResponseStreamWriterFactory(),
-                FakeLoggerFactory.Instance));
-
-            return services.BuildServiceProvider();
         }
     }
 }
