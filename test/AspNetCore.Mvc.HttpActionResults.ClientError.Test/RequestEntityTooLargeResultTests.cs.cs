@@ -47,5 +47,22 @@
             Assert.NotNull(proxyAuthHeader);
             Assert.Equal(fakeHeaderValue, proxyAuthHeader.Value);
         }
+
+        [Fact]
+        public async void ProxyAuthenticationRequiredShouldNotSendHeaderIfNoValueForRetryAfterIsGiven()
+        {
+            // Arrange
+            var fakeContext = this.CreateFakeActionContext();
+            var result = new RequestEntityTooLargeResult();
+
+            // Act
+            await result.ExecuteResultAsync(fakeContext);
+
+            // Assert
+            var requestHasHeaders =
+                fakeContext.HttpContext.Response.Headers.Any();
+
+            Assert.False(requestHasHeaders);
+        }
     }
 }
