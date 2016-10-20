@@ -87,6 +87,9 @@ PreconditionFailedObjectResult
 // 413 Request Entity Too Large
 RequestEntityTooLargeResult
 
+// 414 Request URI Too Long
+RequestUriTooLongResult
+
 // 415 Unsupported Media Type
 UnsupportedMediaTypeResult
 
@@ -193,6 +196,9 @@ controller.PreconditionFailed();
 
 // returns 413 Request Entity Too Large with Retry-After header
 controller.PreconditionFailed(retryAfter);
+
+// returns 414 Request URI Too Long
+controller.RequestUriTooLong();
 
 // returns 415 Unsupported Media Type
 controller.UnsupportedMediaType();
