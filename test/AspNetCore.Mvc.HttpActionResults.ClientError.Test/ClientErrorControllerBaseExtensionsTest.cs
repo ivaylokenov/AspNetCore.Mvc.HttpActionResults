@@ -162,6 +162,17 @@
         }
 
         [Fact]
+        public void RequestUriTooLongShouldReturnTestRequestUriTooLongResult()
+        {
+            var controller = new HomeController();
+
+            var result = controller.TestRequestUriTooLongResult();
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<RequestUriTooLongResult>(result);
+        }
+
+        [Fact]
         public void UnsupportedMediaTypeShouldReturnUnsupportedMediaTypeResult()
         {
             var controller = new HomeController();
@@ -286,6 +297,11 @@
             public IActionResult TestRequestEntityTooLargeResult(DateTime retryAfter)
             {
                 return this.RequestEntityTooLarge(retryAfter);
+            }
+
+            public IActionResult TestRequestUriTooLongResult()
+            {
+                return this.RequestUriTooLong();
             }
 
             public IActionResult TestUnsupportedMediaTypeResult()

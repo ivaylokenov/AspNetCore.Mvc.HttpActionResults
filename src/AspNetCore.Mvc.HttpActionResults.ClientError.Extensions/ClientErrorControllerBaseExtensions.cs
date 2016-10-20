@@ -149,6 +149,14 @@
             => new RequestTimeoutResult();
 
         /// <summary>
+        /// Creates a <see cref="RequestUriTooLongResult"/> object that produces an Request URI Too Long (414) response.
+        /// </summary>
+        /// <param name="controller">MVC controller instance.</param>
+        /// <returns>The created <see cref="RequestUriTooLongResult"/> for the response.</returns>
+        public static RequestUriTooLongResult RequestUriTooLong(this ControllerBase controller)
+            => new RequestUriTooLongResult();
+
+        /// <summary>
         /// Creates an <see cref="UnsupportedMediaTypeResult"/> object that produces an Unsupported Media Type (415) response.
         /// </summary>
         /// <param name="controller">MVC controller instance.</param>
