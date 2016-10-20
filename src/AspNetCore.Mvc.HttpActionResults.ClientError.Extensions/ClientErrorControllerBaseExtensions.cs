@@ -1,5 +1,7 @@
 ﻿namespace Microsoft.AspNetCore.Mvc
 {
+    using System;
+
     using Extensions.Primitives;
 
     /// <summary>
@@ -111,6 +113,32 @@
         /// <returns>The created <see cref="PreconditionFailedObjectResult"/> for the response.</returns>
         public static PreconditionFailedObjectResult PreconditionFailed(this ControllerBase controller, object value)
             => new PreconditionFailedObjectResult(value);
+
+        /// <summary>
+        /// Creates a <see cref="RequestEntityTooLargeResult"/> object that produces a Request Entity Too Large (413) response.
+        /// </summary>
+        /// <param name="controller">MVC controller instance.</param>
+        /// <returns>The created <see cref="RequestEntityTooLargeResult"/> for the response.</returns>
+        public static RequestEntityTooLargeResult RequestEntityTooLarge(this ControllerBase controller)
+            => new RequestEntityTooLargeResult();
+
+        /// <summary>
+        /// Creates a <see cref="RequestEntityTooLargeResult"/> object that produces a Request Entity Too Large (413) response.
+        /// </summary>
+        /// <param name="controller">MVC controller instance.</param>
+        /// <param name="retryAfter">The time after which the client may try the request again in seconds.</param>
+        /// <returns>The created <see cref="RequestEntityTooLargeResult"/> for the response.</returns>
+        public static RequestEntityTooLargeResult RequestEntityTooLarge(this ControllerBase controller, long retryAfter)
+            => new RequestEntityTooLargeResult(retryAfter.ToString());
+
+        /// <summary>
+        /// Creates a <see cref="RequestEntityTooLargeResult"/> object that produces a Request Entity Too Large (413) response.
+        /// </summary>
+        /// <param name="controller">MVC controller instance.</param>
+        /// <param name="retryAfter">The <see cref="DateTime"/> after which the client may try the request again.</param>
+        /// <returns>The created <see cref="RequestEntityTooLargeResult"/> for the response.</returns>
+        public static RequestEntityTooLargeResult RequestEntityTooLarge(this ControllerBase controller, DateTime retryAfter)
+            => new RequestEntityTooLargeResult(retryAfter.ToUniversalTime().ToString("r"));
 
         /// <summary>
         /// Creates a <see cref="RequestTimeoutResult"/> object that produces a Request Timeout (408) response.
