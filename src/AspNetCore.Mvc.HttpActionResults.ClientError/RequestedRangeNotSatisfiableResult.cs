@@ -1,6 +1,7 @@
 ﻿namespace Microsoft.AspNetCore.Mvc
 {
     using System;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
     using Extensions.Primitives;
     using Http;
@@ -41,6 +42,11 @@
             if (context == null)
             {
                 throw new ArgumentNullException(nameof(context));
+            }
+
+            if (context.HttpContext.Response.Headers.Contains(new KeyValuePair<string, StringValues>("content-type", new StringValues("multipart/byteranges"))))
+            {
+                throw new OperationCanceledException("This response MUST NOT use the multipart/byteranges content-type.");
             }
 
             if (SelectedResourceLength.HasValue)
