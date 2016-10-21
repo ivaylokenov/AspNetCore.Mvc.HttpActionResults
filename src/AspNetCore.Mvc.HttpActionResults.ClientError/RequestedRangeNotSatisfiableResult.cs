@@ -6,6 +6,7 @@
     using Extensions.Primitives;
     using Http;
     using Net.Http.Headers;
+    using System.Collections.Generic;
 
     /// <summary>
     /// A <see cref="StatusCodeResult"/> that when executed will produce an empty
