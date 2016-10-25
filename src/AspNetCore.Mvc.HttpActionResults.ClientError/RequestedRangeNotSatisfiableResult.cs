@@ -6,7 +6,7 @@
     using Extensions.Primitives;
     using Http;
     using Net.Http.Headers;
-    using System.Collections.Generic;
+    using global::AspNetCore.Mvc.HttpActionResults.ClientError;
 
     /// <summary>
     /// A <see cref="StatusCodeResult"/> that when executed will produce an empty
@@ -45,9 +45,9 @@
                 throw new ArgumentNullException(nameof(context));
             }
 
-            if (context.HttpContext.Response.Headers.Contains(new KeyValuePair<string, StringValues>("content-type", new StringValues("multipart/byteranges"))))
+            if (context.HttpContext.Response.Headers.Contains(new KeyValuePair<string, StringValues>(HeaderNames.ContentType, new StringValues(Resources.MultipartByterangesContentType))))
             {
-                throw new OperationCanceledException("This response MUST NOT use the multipart/byteranges content-type.");
+                throw new OperationCanceledException(Resources.MustNotUseMultipartContentType);
             }
 
             if (SelectedResourceLength.HasValue)

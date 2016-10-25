@@ -21,6 +21,8 @@
 
     using Newtonsoft.Json;
     using Xunit;
+    using Microsoft.Extensions.Primitives;
+    using System.Threading.Tasks;
 
     public class ClientErrorControllerBaseExtensionsTest
     {
@@ -232,6 +234,14 @@
         }
 
         [Fact]
+        public void RequestedRangeNotSatisfiableResultShouldThrowOperationCanceledExceptionIfResponseHasContentTypeMultipart()
+        {
+            var controller = new HomeController();
+
+            Assert.ThrowsAsync(typeof(OperationCanceledException), async () => await controller.RequestedRangeNotSatisfiableResultShouldThrowOperationCanceledExceptionIfResponseHasContentTypeMultipart(null));
+        }
+
+        [Fact]
         public void ExpectationFailedShouldReturnExpectationFailedResult()
         {
             var controller = new HomeController();
@@ -327,6 +337,17 @@
             public IActionResult TestRequestedRangeNotSatisfiableResultWithPassedSelectedResourceLength(long? selectedResourceLength)
             {
                 return this.RequestedRangeNotSatisfiable(selectedResourceLength);
+            }
+
+            public Task RequestedRangeNotSatisfiableResultShouldThrowOperationCanceledExceptionIfResponseHasContentTypeMultipart(long? selectedResourceLength)
+            { 
+                this.ControllerContext = new ControllerContext();
+
+                this.ControllerContext.HttpContext = new DefaultHttpContext();
+
+                this.ControllerContext.HttpContext.Response.Headers.Add(HeaderNames.ContentType, new StringValues(Resources.MultipartByterangesContentType));
+
+                return this.RequestedRangeNotSatisfiable(selectedResourceLength).ExecuteResultAsync(this.ControllerContext);
             }
 
             public IActionResult TestExpectationFailedResult()
