@@ -1,26 +1,14 @@
 ﻿namespace AspNetCore.Mvc.HttpActionResults.ClientError.Test
 {
     using System;
-    using System.Buffers;
-    using System.IO;
-    using System.Linq;
-
-    using Common;
-    using Common.Logging;
 
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Mvc.Abstractions;
-    using Microsoft.AspNetCore.Mvc.Formatters;
-    using Microsoft.AspNetCore.Mvc.Internal;
-    using Microsoft.AspNetCore.Routing;
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Logging;
-    using Microsoft.Extensions.Options;
     using Microsoft.Net.Http.Headers;
 
-    using Newtonsoft.Json;
     using Xunit;
+    using Microsoft.Extensions.Primitives;
+    using System.Threading.Tasks;
 
     public class ClientErrorControllerBaseExtensionsTest
     {
@@ -232,6 +220,14 @@
         }
 
         [Fact]
+        public void RequestedRangeNotSatisfiableResultShouldThrowOperationCanceledExceptionIfResponseHasContentTypeMultipart()
+        {
+            var controller = new HomeController();
+
+            Assert.ThrowsAsync(typeof(OperationCanceledException), async () => await controller.RequestedRangeNotSatisfiableResultShouldThrowOperationCanceledExceptionIfResponseHasContentTypeMultipart(null));
+        }
+
+        [Fact]
         public void ExpectationFailedShouldReturnExpectationFailedResult()
         {
             var controller = new HomeController();
@@ -327,6 +323,17 @@
             public IActionResult TestRequestedRangeNotSatisfiableResultWithPassedSelectedResourceLength(long? selectedResourceLength)
             {
                 return this.RequestedRangeNotSatisfiable(selectedResourceLength);
+            }
+
+            public Task RequestedRangeNotSatisfiableResultShouldThrowOperationCanceledExceptionIfResponseHasContentTypeMultipart(long? selectedResourceLength)
+            { 
+                this.ControllerContext = new ControllerContext();
+
+                this.ControllerContext.HttpContext = new DefaultHttpContext();
+
+                this.ControllerContext.HttpContext.Response.Headers.Add(HeaderNames.ContentType, new StringValues("multipart/byteranges"));
+
+                return this.RequestedRangeNotSatisfiable(selectedResourceLength).ExecuteResultAsync(this.ControllerContext);
             }
 
             public IActionResult TestExpectationFailedResult()
