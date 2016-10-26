@@ -1,25 +1,11 @@
 ﻿namespace AspNetCore.Mvc.HttpActionResults.ClientError.Test
 {
     using System;
-    using System.Buffers;
-    using System.IO;
-    using System.Linq;
-
-    using Common;
-    using Common.Logging;
 
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Mvc.Abstractions;
-    using Microsoft.AspNetCore.Mvc.Formatters;
-    using Microsoft.AspNetCore.Mvc.Internal;
-    using Microsoft.AspNetCore.Routing;
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Logging;
-    using Microsoft.Extensions.Options;
     using Microsoft.Net.Http.Headers;
 
-    using Newtonsoft.Json;
     using Xunit;
     using Microsoft.Extensions.Primitives;
     using System.Threading.Tasks;
@@ -345,7 +331,7 @@
 
                 this.ControllerContext.HttpContext = new DefaultHttpContext();
 
-                this.ControllerContext.HttpContext.Response.Headers.Add(HeaderNames.ContentType, new StringValues(Resources.MultipartByterangesContentType));
+                this.ControllerContext.HttpContext.Response.Headers.Add(HeaderNames.ContentType, new StringValues("multipart/byteranges"));
 
                 return this.RequestedRangeNotSatisfiable(selectedResourceLength).ExecuteResultAsync(this.ControllerContext);
             }
