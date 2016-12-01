@@ -40,10 +40,6 @@ ContinueResult
 // 101 Switching Protocols
 SwitchingProtocolsResult
 
-// 202 Accepted
-AcceptedResult
-AcceptedObjectResult
-
 // 205 Reset Content
 ResetContentResult
 
@@ -124,18 +120,6 @@ controller.Continue();
 
 // returns 101 Switching Protocols
 controller.SwitchingProtocols(upgradeValue);
-
-// returns 202 Accepted
-controller.Accepted();
-
-// returns 202 Accepted with Location header
-controller.Accepted(someUri);
-
-// returns 202 Accepted with formatted value
-controller.Accepted(someObject);
-
-// returns 202 Accepted with Location header and formatted value
-controller.Accepted(someUri, someObject);
 
 // returns 205 Reset Content
 controller.ResetContent();

@@ -6,19 +6,20 @@
   "testRunner": "xunit",
 
   "dependencies": {
+    "Microsoft.DotNet.InternalAbstractions": "1.0.0", // remove when not needed
     "dotnet-test-xunit": "2.2.0-*",
     "xunit": "2.2.0-*",
-    "AspNetCore.Mvc.HttpActionResults.ClientError.Extensions": "0.2.0",
-    "Microsoft.AspNetCore.Mvc.Formatters.Json": "1.0.1",
+    "AspNetCore.Mvc.HttpActionResults.ClientError.Extensions": "0.3.0",
+    "Microsoft.AspNetCore.Mvc.Formatters.Json": "1.1.0",
     "Microsoft.Extensions.DependencyInjection": "1.0.0"
   },
 
   "frameworks": {
-    "netcoreapp1.0": {
+    "netcoreapp1.1": {
       "imports": "dotnet5.4",
       "dependencies": {
         "Microsoft.NETCore.App": {
-          "version": "1.0.1",
+          "version": "1.1.0",
           "type": "platform"
         }
       }
