@@ -49,7 +49,7 @@
                 throw new OperationCanceledException("This response MUST NOT use the multipart/byteranges content-type.");
             }
 
-            if (SelectedResourceLength.HasValue)
+            if (this.SelectedResourceLength.HasValue)
             {
                 context.HttpContext.Response.Headers.Add(HeaderNames.ContentRange, new StringValues(this.SelectedResourceLength.ToString()));
             }

@@ -16,7 +16,7 @@
         public async void ProxyAuthenticationRequiredShouldSetStatusCodeCorrectly()
         {
             // Arrange
-            const string fakeHeaderValue = @"Fake header value";
+            const string fakeHeaderValue = "Fake header value";
 
             var fakeContext = this.CreateFakeActionContext();
             var result = new RequestEntityTooLargeResult(fakeHeaderValue);
@@ -32,7 +32,7 @@
         public async void ProxyAuthenticationRequiredShouldSetHeaderCorrectly()
         {
             // Arrange
-            const string fakeHeaderValue = @"Fake header value";
+            const string fakeHeaderValue = "Fake header value";
 
             var fakeContext = this.CreateFakeActionContext();
             var result = new RequestEntityTooLargeResult(fakeHeaderValue);

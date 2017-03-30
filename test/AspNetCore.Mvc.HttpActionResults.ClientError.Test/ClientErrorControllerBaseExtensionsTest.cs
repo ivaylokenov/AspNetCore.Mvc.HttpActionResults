@@ -326,10 +326,11 @@
             }
 
             public Task RequestedRangeNotSatisfiableResultShouldThrowOperationCanceledExceptionIfResponseHasContentTypeMultipart(long? selectedResourceLength)
-            { 
-                this.ControllerContext = new ControllerContext();
-
-                this.ControllerContext.HttpContext = new DefaultHttpContext();
+            {
+                this.ControllerContext = new ControllerContext
+                {
+                    HttpContext = new DefaultHttpContext()
+                };
 
                 this.ControllerContext.HttpContext.Response.Headers.Add(HeaderNames.ContentType, new StringValues("multipart/byteranges"));
 
