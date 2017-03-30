@@ -40,8 +40,19 @@ ContinueResult
 // 101 Switching Protocols
 SwitchingProtocolsResult
 
+// 203 Non-Authoritative Information
+NonAuthoritativeInformationResult
+
 // 205 Reset Content
 ResetContentResult
+
+// 206 Partial Content
+PartialContentResult
+PartialContentObjectResult
+
+// 300 Multiple Choices
+MultipleChoicesResult
+MultipleChoicesObjectResult
 
 // 303 See Other
 SeeOtherResult
@@ -49,6 +60,13 @@ SeeOtherObjectResult
 
 // 304 Not Modified
 NotModifiedResult
+
+// 305 Use Proxy
+UseProxyResult
+
+// 305 Temporary Redirect
+TemporaryRedirectResult
+TemporaryRedirectObjectResult
 
 // 402 Payment Required
 PaymentRequiredResult
@@ -121,8 +139,23 @@ controller.Continue();
 // returns 101 Switching Protocols
 controller.SwitchingProtocols(upgradeValue);
 
+// returns 203 Non-Authoritative Information
+controller.NonAuthoritativeInformation();
+
 // returns 205 Reset Content
 controller.ResetContent();
+
+// returns 205 Partial Content
+controller.PartialContent();
+
+// returns 205 Partial Content with formatted value
+controller.PartialContent(someObject);
+
+// returns 300 Multiple Choices
+controller.MultipleChoices();
+
+// returns 300 Multiple Choices with formatted value
+controller.MultipleChoices(someObject);
 
 // returns 303 See Other
 controller.SeeOther();
@@ -138,6 +171,15 @@ controller.SeeOther(someUri, someObject);
 
 // returns 304 Not Modified
 controller.NotModified();
+
+// returns 305 Use Proxy with Location header(containing the proxy URI)
+controller.UseProxy(proxyUri);
+
+// returns 307 Temporary Redirect wtih Location header
+controller.TemporaryRedirect(temporaryUri);
+
+// returns 307 Temporary Redirect wtih Location header and formatted value
+controller.TemporaryRedirect(someObject, temporaryUri);
 
 // returns 402 Payment Required
 controller.PaymentRequired();
@@ -186,6 +228,12 @@ controller.RequestUriTooLong();
 
 // returns 415 Unsupported Media Type
 controller.UnsupportedMediaType();
+
+// returns 416 Requested Range Not Satisfiable
+controller.RequestedRangeNotSatisfiable();
+
+// returns 417 Expectation Failed
+controller.ExpectationFailed();
 
 // returns 418 Im A Teapot
 controller.ImATeapot();
