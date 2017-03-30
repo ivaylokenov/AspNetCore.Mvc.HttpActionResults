@@ -18,10 +18,9 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="PartialContentResult"/> class.
         /// </summary>
-        public PartialContentResult(string contentRange = null)
+        public PartialContentResult()
             : base(StatusCodes.Status206PartialContent)
         {
-            this.ContentRange = contentRange;
         }
 
         /// <summary>

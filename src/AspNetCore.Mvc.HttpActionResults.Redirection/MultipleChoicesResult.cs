@@ -19,7 +19,7 @@
         /// Initializes a new instance of the <see cref="MultipleChoicesResult"/> class.
         /// </summary>
         /// <param name="preferedChoiceUri">Preferred resource choice represented as an URI.</param>
-        public MultipleChoicesResult(string preferedChoiceUri)
+        public MultipleChoicesResult(string preferedChoiceUri = null)
             : base(StatusCodes.Status300MultipleChoices)
         {
             this.PreferedChoiceUri = preferedChoiceUri;
