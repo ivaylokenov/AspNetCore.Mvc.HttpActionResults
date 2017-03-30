@@ -122,8 +122,8 @@ namespace AspNetCore.Mvc.HttpActionResults.ServerError.Test
 			var result = controller.TestHTTPVersionNotSupportedResult(value);
 
 			Assert.NotNull(result);
-			Assert.IsAssignableFrom<HTTPVersionNotSupportedResult>(result);
-			var actionResult = (HTTPVersionNotSupportedResult)result;
+			Assert.IsAssignableFrom<HttpVersionNotSupportedResult>(result);
+			var actionResult = (HttpVersionNotSupportedResult)result;
 			Assert.Equal(actionResult.Value, value);
 		}
 
