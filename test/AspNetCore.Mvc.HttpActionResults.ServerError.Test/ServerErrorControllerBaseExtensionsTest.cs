@@ -114,12 +114,12 @@ namespace AspNetCore.Mvc.HttpActionResults.ServerError.Test
 		}
 
 		[Fact]
-		public void HTTPVersionNotSupportedShouldReturnHTTPVersionNotSupportedResult()
+		public void HttpVersionNotSupportedShouldReturnHttpVersionNotSupportedResult()
 		{
 			var controller = new HomeController();
 			var value = new object { };
 
-			var result = controller.TestHTTPVersionNotSupportedResult(value);
+			var result = controller.TestHttpVersionNotSupportedResult(value);
 
 			Assert.NotNull(result);
 			Assert.IsAssignableFrom<HttpVersionNotSupportedResult>(result);
@@ -169,7 +169,7 @@ namespace AspNetCore.Mvc.HttpActionResults.ServerError.Test
 				return this.GatewayTimeout();
 			}
 
-			public IActionResult TestHTTPVersionNotSupportedResult(object value)
+			public IActionResult TestHttpVersionNotSupportedResult(object value)
 			{
 				return this.HTTPVersionNotSupported(value);
 			}
