@@ -1,10 +1,10 @@
-﻿namespace AspNetCore.Mvc.HttpActionResults.ClientError.Test.Common
+﻿namespace AspNetCore.Mvc.HttpActionResults.Test
 {
     using System;
     using System.Buffers;
     using System.IO;
 
-    using AspNetCore.Mvc.HttpActionResults.ClientError.Test.Common.Logging;
+    using AspNetCore.Mvc.HttpActionResults.Test.Logging;
 
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
@@ -20,7 +20,6 @@
 
     public abstract class BaseHttpResultTests
     {
-        // TODO: Extract to a base class for all unit testing projects
         protected ActionContext CreateFakeActionContext()
         {
             var httpContext = new DefaultHttpContext
@@ -36,7 +35,6 @@
             return context;
         }
 
-        // TODO: Extract to a base class for all unit testing projects
         protected IServiceProvider CreateServices()
         {
             var options = new OptionsManager<MvcOptions>(new IConfigureOptions<MvcOptions>[] { });

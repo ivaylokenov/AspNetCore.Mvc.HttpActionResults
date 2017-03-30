@@ -1,6 +1,7 @@
-﻿namespace AspNetCore.Mvc.HttpActionResults.ClientError.Test.Common.Logging
+﻿namespace AspNetCore.Mvc.HttpActionResults.Test.Logging
 {
     using System;
+
     using Microsoft.Extensions.Logging;
 
     public class FakeLogger : ILogger

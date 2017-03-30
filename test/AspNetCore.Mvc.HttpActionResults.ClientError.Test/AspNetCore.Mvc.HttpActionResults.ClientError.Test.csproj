@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp1.1;net451</TargetFrameworks>
+    <TargetFrameworks>netcoreapp1.1</TargetFrameworks>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <AssemblyName>AspNetCore.Mvc.HttpActionResults.ClientError.Test</AssemblyName>
     <PackageId>AspNetCore.Mvc.HttpActionResults.ClientError.Test</PackageId>
@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\AspNetCore.Mvc.HttpActionResults.ClientError.Extensions\AspNetCore.Mvc.HttpActionResults.ClientError.Extensions.csproj" />
+    <ProjectReference Include="..\AspNetCore.Mvc.HttpActionResults.Test\AspNetCore.Mvc.HttpActionResults.Test.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,8 +23,6 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
     <PackageReference Include="Microsoft.DotNet.InternalAbstractions" Version="1.0.0" />
     <PackageReference Include="xunit" Version="2.2.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Json" Version="1.1.2" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="1.1.0" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net451' ">

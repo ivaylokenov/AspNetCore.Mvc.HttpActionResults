@@ -37,6 +37,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.Mvc.HttpActionRe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.Mvc.HttpActionResults.ServerError.Test", "test\AspNetCore.Mvc.HttpActionResults.ServerError.Test\AspNetCore.Mvc.HttpActionResults.ServerError.Test.csproj", "{4F753C9C-8146-48C4-BFEF-6BC0B6E62DA9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.Mvc.HttpActionResults.Test", "test\AspNetCore.Mvc.HttpActionResults.Test\AspNetCore.Mvc.HttpActionResults.Test.csproj", "{B3959A96-C0BA-45F7-89B5-9597F506046C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{4F753C9C-8146-48C4-BFEF-6BC0B6E62DA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F753C9C-8146-48C4-BFEF-6BC0B6E62DA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F753C9C-8146-48C4-BFEF-6BC0B6E62DA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3959A96-C0BA-45F7-89B5-9597F506046C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3959A96-C0BA-45F7-89B5-9597F506046C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3959A96-C0BA-45F7-89B5-9597F506046C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3959A96-C0BA-45F7-89B5-9597F506046C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -118,5 +124,6 @@ Global
 		{9440B360-66AC-4BED-8434-D40B86966F1D} = {2DE37686-2EBC-47AD-8419-612AEDBCA40D}
 		{99861FB2-3896-4EFA-A332-D7F8D8AB6489} = {2DE37686-2EBC-47AD-8419-612AEDBCA40D}
 		{4F753C9C-8146-48C4-BFEF-6BC0B6E62DA9} = {2DE37686-2EBC-47AD-8419-612AEDBCA40D}
+		{B3959A96-C0BA-45F7-89B5-9597F506046C} = {2DE37686-2EBC-47AD-8419-612AEDBCA40D}
 	EndGlobalSection
 EndGlobal

@@ -1,6 +1,6 @@
 ﻿namespace AspNetCore.Mvc.HttpActionResults.ClientError.Test
 {
-    using AspNetCore.Mvc.HttpActionResults.ClientError.Test.Common;
+    using AspNetCore.Mvc.HttpActionResults.Test;
 
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;

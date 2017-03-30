@@ -1,4 +1,4 @@
-﻿namespace AspNetCore.Mvc.HttpActionResults.ClientError.Test.Common.Logging
+﻿namespace AspNetCore.Mvc.HttpActionResults.Test.Logging
 {
     using Microsoft.Extensions.Logging;
 

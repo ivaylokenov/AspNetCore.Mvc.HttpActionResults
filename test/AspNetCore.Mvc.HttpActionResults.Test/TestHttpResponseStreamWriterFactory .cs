@@ -1,4 +1,4 @@
-﻿namespace AspNetCore.Mvc.HttpActionResults.ClientError.Test.Common
+﻿namespace AspNetCore.Mvc.HttpActionResults.Test
 {
     using System.IO;
     using System.Text;
