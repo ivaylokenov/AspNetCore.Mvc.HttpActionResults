@@ -2,6 +2,7 @@
 {
     using System;
     using System.Globalization;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Http;
@@ -57,8 +58,10 @@
         public override Task ExecuteResultAsync(ActionContext context)
         {
             context.HttpContext.Response.Headers.Add(
-                HeaderNames.Date, 
+                HeaderNames.Date,
                 new StringValues(DateTime.Now.ToString(CultureInfo.InvariantCulture)));
+
+            this.ValidateContentHeaders(context);
 
             if (!string.IsNullOrEmpty(this.ContentRange))
             {
@@ -91,6 +94,17 @@
             }
 
             return base.ExecuteResultAsync(context);
+        }
+
+        private void ValidateContentHeaders(ActionContext context)
+        {
+            var hasMultipartHeader =
+                context.HttpContext.Response.Headers.Any(x => x.Key == HeaderNames.ContentType && x.Value == "multipart/byteranges");
+
+            if (!hasMultipartHeader && string.IsNullOrWhiteSpace(this.ContentRange))
+            {
+                throw new InvalidOperationException(@"The response must contain either a Content-Range header field indicating the range included with this response, or a multipart/byteranges Content-Type including Content-Range fields for each part.");
+            }
         }
     }
 }
