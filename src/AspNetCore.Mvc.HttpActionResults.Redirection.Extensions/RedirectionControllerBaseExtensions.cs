@@ -79,5 +79,24 @@
         /// <returns>The created <see cref="UseProxyResult"/> for the response.</returns>
         public static UseProxyResult UseProxy(this ControllerBase controller, string proxyUri)
             => new UseProxyResult(proxyUri);
+
+        /// <summary>
+        /// Creates an <see cref="TemporaryRedirectResult"/> object that produces a Temporary Redirect (307) response.
+        /// </summary>
+        /// <param name="controller">MVC controller instance.</param>
+        /// <param name="temporaryUri">The temporary URI of the requested resource resides.</param>
+        /// <returns>The created <see cref="TemporaryRedirectResult"/> for the response.</returns>
+        public static TemporaryRedirectResult TemporaryRedirect(this ControllerBase controller, string temporaryUri)
+            => new TemporaryRedirectResult(temporaryUri);
+
+        /// <summary>
+        /// Creates an <see cref="TemporaryRedirectObjectResult"/> object that produces a Temporary Redirect (307) response.
+        /// </summary>
+        /// <param name="controller">MVC controller instance.</param>
+        /// <param name="value">The accepted value to format in the entity body.</param>
+        /// <param name="temporaryUri">The temporary URI of the requested resource resides.</param>
+        /// <returns>The created <see cref="TemporaryRedirectObjectResult"/> for the response.</returns>
+        public static TemporaryRedirectObjectResult TemporaryRedirect(this ControllerBase controller, object value, string temporaryUri)
+            => new TemporaryRedirectObjectResult(value, temporaryUri);
     }
 }

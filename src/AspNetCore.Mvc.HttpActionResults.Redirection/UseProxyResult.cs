@@ -1,8 +1,12 @@
 ﻿namespace Microsoft.AspNetCore.Mvc
 {
     using System;
+    using System.Threading.Tasks;
 
     using Http;
+
+    using Microsoft.Extensions.Primitives;
+    using Microsoft.Net.Http.Headers;
 
     /// <summary>
     /// An <see cref="StatusCodeResult"/> that when executed will produce an empty
@@ -41,6 +45,16 @@
 
                 this.proxyUri = value;
             }
+        }
+
+        /// <inheritdoc />
+        public override Task ExecuteResultAsync(ActionContext context)
+        {
+            context.HttpContext.Response.Headers.Add(
+                HeaderNames.Location,
+                new StringValues(this.ProxyUri));
+
+            return base.ExecuteResultAsync(context);
         }
     }
 }
