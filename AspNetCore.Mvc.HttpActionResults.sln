@@ -1,44 +1,45 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0250AF09-DBA6-4024-B551-56B65338BC67}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "globals", "globals", "{9CBF7DB8-D11C-4EA9-A3BB-EDCA14423546}"
-	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
-	EndProjectSection
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AspNetCore.Mvc.HttpActionResults", "src\AspNetCore.Mvc.HttpActionResults\AspNetCore.Mvc.HttpActionResults.xproj", "{83AFFF70-971B-41BB-9D32-B88B8965B475}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AspNetCore.Mvc.HttpActionResults.Informational", "src\AspNetCore.Mvc.HttpActionResults.Informational\AspNetCore.Mvc.HttpActionResults.Informational.xproj", "{8A488BE4-1AE0-4785-BBF9-6EBB034F3F64}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AspNetCore.Mvc.HttpActionResults.Success", "src\AspNetCore.Mvc.HttpActionResults.Success\AspNetCore.Mvc.HttpActionResults.Success.xproj", "{958D691D-A587-45C1-B617-0E9EAD05A86A}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AspNetCore.Mvc.HttpActionResults.Redirection", "src\AspNetCore.Mvc.HttpActionResults.Redirection\AspNetCore.Mvc.HttpActionResults.Redirection.xproj", "{6C6F319B-B038-467D-9840-187B4DD3F6B7}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AspNetCore.Mvc.HttpActionResults.ClientError", "src\AspNetCore.Mvc.HttpActionResults.ClientError\AspNetCore.Mvc.HttpActionResults.ClientError.xproj", "{81FD818D-36D5-4B82-A781-6309FF7EFF47}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AspNetCore.Mvc.HttpActionResults.ServerError", "src\AspNetCore.Mvc.HttpActionResults.ServerError\AspNetCore.Mvc.HttpActionResults.ServerError.xproj", "{1A2AB45E-071E-40F5-B71F-171DF9656B51}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AspNetCore.Mvc.HttpActionResults.Success.Extensions", "src\AspNetCore.Mvc.HttpActionResults.Success.Extensions\AspNetCore.Mvc.HttpActionResults.Success.Extensions.xproj", "{55D14C10-2354-4517-8F45-ADCA43301043}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AspNetCore.Mvc.HttpActionResults.ClientError.Extensions", "src\AspNetCore.Mvc.HttpActionResults.ClientError.Extensions\AspNetCore.Mvc.HttpActionResults.ClientError.Extensions.xproj", "{46B4C3B6-2E3C-4EF2-814B-BEF6141B8CE1}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AspNetCore.Mvc.HttpActionResults.Informational.Extensions", "src\AspNetCore.Mvc.HttpActionResults.Informational.Extensions\AspNetCore.Mvc.HttpActionResults.Informational.Extensions.xproj", "{B4CC9426-BF47-4712-9B34-D0D3E13980B4}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AspNetCore.Mvc.HttpActionResults.Redirection.Extensions", "src\AspNetCore.Mvc.HttpActionResults.Redirection.Extensions\AspNetCore.Mvc.HttpActionResults.Redirection.Extensions.xproj", "{8DDE7331-5DAA-4C63-9DF4-EC0850DA7A3C}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AspNetCore.Mvc.HttpActionResults.ServerError.Extensions", "src\AspNetCore.Mvc.HttpActionResults.ServerError.Extensions\AspNetCore.Mvc.HttpActionResults.ServerError.Extensions.xproj", "{BDD9F3C5-D67D-4B10-B931-3812A4282BC4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{2DE37686-2EBC-47AD-8419-612AEDBCA40D}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AspNetCore.Mvc.HttpActionResults.ClientError.Test", "test\AspNetCore.Mvc.HttpActionResults.ClientError.Test\AspNetCore.Mvc.HttpActionResults.ClientError.Test.xproj", "{9440B360-66AC-4BED-8434-D40B86966F1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.Mvc.HttpActionResults", "src\AspNetCore.Mvc.HttpActionResults\AspNetCore.Mvc.HttpActionResults.csproj", "{83AFFF70-971B-41BB-9D32-B88B8965B475}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AspNetCore.Mvc.HttpActionResults.Success.Test", "test\AspNetCore.Mvc.HttpActionResults.Success.Test\AspNetCore.Mvc.HttpActionResults.Success.Test.xproj", "{99861FB2-3896-4EFA-A332-D7F8D8AB6489}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.Mvc.HttpActionResults.Informational", "src\AspNetCore.Mvc.HttpActionResults.Informational\AspNetCore.Mvc.HttpActionResults.Informational.csproj", "{8A488BE4-1AE0-4785-BBF9-6EBB034F3F64}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AspNetCore.Mvc.HttpActionResults.ServerError.Test", "test\AspNetCore.Mvc.HttpActionResults.ServerError.Test\AspNetCore.Mvc.HttpActionResults.ServerError.Test.xproj", "{4F753C9C-8146-48C4-BFEF-6BC0B6E62DA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.Mvc.HttpActionResults.Success", "src\AspNetCore.Mvc.HttpActionResults.Success\AspNetCore.Mvc.HttpActionResults.Success.csproj", "{958D691D-A587-45C1-B617-0E9EAD05A86A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.Mvc.HttpActionResults.Redirection", "src\AspNetCore.Mvc.HttpActionResults.Redirection\AspNetCore.Mvc.HttpActionResults.Redirection.csproj", "{6C6F319B-B038-467D-9840-187B4DD3F6B7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.Mvc.HttpActionResults.ClientError", "src\AspNetCore.Mvc.HttpActionResults.ClientError\AspNetCore.Mvc.HttpActionResults.ClientError.csproj", "{81FD818D-36D5-4B82-A781-6309FF7EFF47}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.Mvc.HttpActionResults.ServerError", "src\AspNetCore.Mvc.HttpActionResults.ServerError\AspNetCore.Mvc.HttpActionResults.ServerError.csproj", "{1A2AB45E-071E-40F5-B71F-171DF9656B51}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.Mvc.HttpActionResults.Success.Extensions", "src\AspNetCore.Mvc.HttpActionResults.Success.Extensions\AspNetCore.Mvc.HttpActionResults.Success.Extensions.csproj", "{55D14C10-2354-4517-8F45-ADCA43301043}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.Mvc.HttpActionResults.ClientError.Extensions", "src\AspNetCore.Mvc.HttpActionResults.ClientError.Extensions\AspNetCore.Mvc.HttpActionResults.ClientError.Extensions.csproj", "{46B4C3B6-2E3C-4EF2-814B-BEF6141B8CE1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.Mvc.HttpActionResults.Informational.Extensions", "src\AspNetCore.Mvc.HttpActionResults.Informational.Extensions\AspNetCore.Mvc.HttpActionResults.Informational.Extensions.csproj", "{B4CC9426-BF47-4712-9B34-D0D3E13980B4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.Mvc.HttpActionResults.Redirection.Extensions", "src\AspNetCore.Mvc.HttpActionResults.Redirection.Extensions\AspNetCore.Mvc.HttpActionResults.Redirection.Extensions.csproj", "{8DDE7331-5DAA-4C63-9DF4-EC0850DA7A3C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.Mvc.HttpActionResults.ServerError.Extensions", "src\AspNetCore.Mvc.HttpActionResults.ServerError.Extensions\AspNetCore.Mvc.HttpActionResults.ServerError.Extensions.csproj", "{BDD9F3C5-D67D-4B10-B931-3812A4282BC4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.Mvc.HttpActionResults.ClientError.Test", "test\AspNetCore.Mvc.HttpActionResults.ClientError.Test\AspNetCore.Mvc.HttpActionResults.ClientError.Test.csproj", "{9440B360-66AC-4BED-8434-D40B86966F1D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.Mvc.HttpActionResults.Success.Test", "test\AspNetCore.Mvc.HttpActionResults.Success.Test\AspNetCore.Mvc.HttpActionResults.Success.Test.csproj", "{99861FB2-3896-4EFA-A332-D7F8D8AB6489}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.Mvc.HttpActionResults.ServerError.Test", "test\AspNetCore.Mvc.HttpActionResults.ServerError.Test\AspNetCore.Mvc.HttpActionResults.ServerError.Test.csproj", "{4F753C9C-8146-48C4-BFEF-6BC0B6E62DA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.Mvc.HttpActionResults.Test", "test\AspNetCore.Mvc.HttpActionResults.Test\AspNetCore.Mvc.HttpActionResults.Test.csproj", "{B3959A96-C0BA-45F7-89B5-9597F506046C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.Mvc.HttpActionResults.Redirection.Test", "test\AspNetCore.Mvc.HttpActionResults.Redirection.Test\AspNetCore.Mvc.HttpActionResults.Redirection.Test.csproj", "{048525D5-5D52-4DB7-AD46-A394215C04C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -102,6 +103,14 @@ Global
 		{4F753C9C-8146-48C4-BFEF-6BC0B6E62DA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F753C9C-8146-48C4-BFEF-6BC0B6E62DA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F753C9C-8146-48C4-BFEF-6BC0B6E62DA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3959A96-C0BA-45F7-89B5-9597F506046C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3959A96-C0BA-45F7-89B5-9597F506046C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3959A96-C0BA-45F7-89B5-9597F506046C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3959A96-C0BA-45F7-89B5-9597F506046C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{048525D5-5D52-4DB7-AD46-A394215C04C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{048525D5-5D52-4DB7-AD46-A394215C04C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{048525D5-5D52-4DB7-AD46-A394215C04C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{048525D5-5D52-4DB7-AD46-A394215C04C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -121,5 +130,7 @@ Global
 		{9440B360-66AC-4BED-8434-D40B86966F1D} = {2DE37686-2EBC-47AD-8419-612AEDBCA40D}
 		{99861FB2-3896-4EFA-A332-D7F8D8AB6489} = {2DE37686-2EBC-47AD-8419-612AEDBCA40D}
 		{4F753C9C-8146-48C4-BFEF-6BC0B6E62DA9} = {2DE37686-2EBC-47AD-8419-612AEDBCA40D}
+		{B3959A96-C0BA-45F7-89B5-9597F506046C} = {2DE37686-2EBC-47AD-8419-612AEDBCA40D}
+		{048525D5-5D52-4DB7-AD46-A394215C04C8} = {2DE37686-2EBC-47AD-8419-612AEDBCA40D}
 	EndGlobalSection
 EndGlobal

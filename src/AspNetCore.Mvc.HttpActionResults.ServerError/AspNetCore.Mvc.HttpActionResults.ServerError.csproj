@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>AspNetCore.Mvc.HttpActionResults.ServerError is a collection of server error HTTP status code action results for ASP.NET Core MVC. See the project repository for more information and available features.</Description>
+    <Copyright>2016 Ivaylo Kenov</Copyright>
+    <AssemblyTitle>ASP.NET Core MVC Server Error HTTP Action Results</AssemblyTitle>
+    <VersionPrefix>0.3.0</VersionPrefix>
+    <Authors>Ivaylo Kenov</Authors>
+    <TargetFrameworks>netstandard1.6;net451</TargetFrameworks>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <AssemblyName>AspNetCore.Mvc.HttpActionResults.ServerError</AssemblyName>
+    <AssemblyOriginatorKeyFile>../../tools/Key.snk</AssemblyOriginatorKeyFile>
+    <SignAssembly>true</SignAssembly>
+    <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
+    <PackageId>AspNetCore.Mvc.HttpActionResults.ServerError</PackageId>
+    <PackageTags>asp.net core mvc http action result</PackageTags>
+    <PackageIconUrl>https://raw.githubusercontent.com/ivaylokenov/AspNetCore.Mvc.HttpActionResults/master/tools/nuget-logo.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/ivaylokenov/AspNetCore.Mvc.HttpActionResults</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/ivaylokenov/AspNetCore.Mvc.HttpActionResults/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>git://github.com/ivaylokenov/AspNetCore.Mvc.HttpActionResults</RepositoryUrl>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="1.1.2" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net451' ">
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+</Project>

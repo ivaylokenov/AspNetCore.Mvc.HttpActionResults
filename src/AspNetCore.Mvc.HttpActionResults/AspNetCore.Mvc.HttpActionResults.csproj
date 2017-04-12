@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>AspNetCore.Mvc.HttpActionResults is a collection of HTTP status code action results and extension methods for ASP.NET Core MVC. See the project repository for more information and available features.</Description>
+    <Copyright>2016 Ivaylo Kenov</Copyright>
+    <AssemblyTitle>ASP.NET Core MVC HTTP Action Results</AssemblyTitle>
+    <VersionPrefix>0.3.0</VersionPrefix>
+    <Authors>Ivaylo Kenov</Authors>
+    <TargetFrameworks>netstandard1.6;net451</TargetFrameworks>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <AssemblyName>AspNetCore.Mvc.HttpActionResults</AssemblyName>
+    <AssemblyOriginatorKeyFile>../../tools/Key.snk</AssemblyOriginatorKeyFile>
+    <SignAssembly>true</SignAssembly>
+    <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
+    <PackageId>AspNetCore.Mvc.HttpActionResults</PackageId>
+    <PackageTags>asp.net core mvc http action result</PackageTags>
+    <PackageIconUrl>https://raw.githubusercontent.com/ivaylokenov/AspNetCore.Mvc.HttpActionResults/master/tools/nuget-logo.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/ivaylokenov/AspNetCore.Mvc.HttpActionResults</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/ivaylokenov/AspNetCore.Mvc.HttpActionResults/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>git://github.com/ivaylokenov/AspNetCore.Mvc.HttpActionResults</RepositoryUrl>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AspNetCore.Mvc.HttpActionResults.Informational.Extensions\AspNetCore.Mvc.HttpActionResults.Informational.Extensions.csproj" />
+    <ProjectReference Include="..\AspNetCore.Mvc.HttpActionResults.Success.Extensions\AspNetCore.Mvc.HttpActionResults.Success.Extensions.csproj" />
+    <ProjectReference Include="..\AspNetCore.Mvc.HttpActionResults.Redirection.Extensions\AspNetCore.Mvc.HttpActionResults.Redirection.Extensions.csproj" />
+    <ProjectReference Include="..\AspNetCore.Mvc.HttpActionResults.ClientError.Extensions\AspNetCore.Mvc.HttpActionResults.ClientError.Extensions.csproj" />
+    <ProjectReference Include="..\AspNetCore.Mvc.HttpActionResults.ServerError.Extensions\AspNetCore.Mvc.HttpActionResults.ServerError.Extensions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net451' ">
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+</Project>

@@ -92,12 +92,12 @@ namespace Microsoft.AspNetCore.Mvc
             => new GatewayTimeoutResult();
 
         /// <summary>
-        /// Creates a <see cref="HTTPVersionNotSupportedResult"/> object that produces a HTTP Version Not Supported (505) response.
+        /// Creates a <see cref="HttpVersionNotSupportedResult"/> object that produces a HTTP Version Not Supported (505) response.
         /// </summary>
         /// <param name="controller">MVC controller instance.</param>
         /// <param name="value">The precondition failed value to format in the entity body.</param>
-        /// <returns>The created <see cref="HTTPVersionNotSupportedResult"/> for the response.</returns>
-        public static HTTPVersionNotSupportedResult HTTPVersionNotSupported(this ControllerBase controller, object value)
-            => new HTTPVersionNotSupportedResult(value);
+        /// <returns>The created <see cref="HttpVersionNotSupportedResult"/> for the response.</returns>
+        public static HttpVersionNotSupportedResult HTTPVersionNotSupported(this ControllerBase controller, object value)
+            => new HttpVersionNotSupportedResult(value);
     }
 }

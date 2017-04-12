@@ -27,6 +27,40 @@
             Assert.IsAssignableFrom<ResetContentResult>(result);
         }
 
+        [Fact]
+        public void NonAuthoritativeInformationShouldReturnNonAuthoritativeInformationResult()
+        {
+            var controller = new HomeController();
+
+            var result = controller.TestNonAuthoritativeInformationResult();
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<NonAuthoritativeInformationResult>(result);
+        }
+
+        [Fact]
+        public void PartialContentShouldReturnPartialContentResult()
+        {
+            var controller = new HomeController();
+
+            var result = controller.TestPartialContentResult();
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<PartialContentResult>(result);
+        }
+
+        [Fact]
+        public void PartialContentShouldReturnPartialContentObjectResultResult()
+        {
+            var controller = new HomeController();
+            const string value = "I'm so fake";
+
+            var result = controller.TestPartialContentResult(value);
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<PartialContentObjectResult>(result);
+        }
+
         private class HomeController : ControllerBase
         {
             public IActionResult TestAcceptedResult()
@@ -37,6 +71,21 @@
             public IActionResult TestResetContentResult()
             {
                 return this.ResetContent();
+            }
+
+            public IActionResult TestNonAuthoritativeInformationResult()
+            {
+                return this.NonAuthoritativeInformation();
+            }
+
+            public IActionResult TestPartialContentResult()
+            {
+                return this.PartialContent();
+            }
+
+            public IActionResult TestPartialContentResult(object value)
+            {
+                return this.PartialContent(value);
             }
         }
     }
